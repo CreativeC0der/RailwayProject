@@ -1,0 +1,18 @@
+<table border="1px">
+    <tr>
+        <th>Name</th>
+        <th>Account number</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+    </tr>
+
+    {{#each details as |row|}}
+        <tr>
+            {{#each row as |val|}}
+                <td>{{val}}</td>
+            {{/each}}
+        </tr>
+        
+    {{/each}}
+</table>
