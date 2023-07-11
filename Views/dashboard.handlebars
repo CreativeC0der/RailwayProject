@@ -1,4 +1,22 @@
-<p class="btn-btn-success">after login
+<table border="1px">
+    <tr>
+        <th>Account number</th>
+        <th>Booking ID</th>
+        <th>Train Number</th>
+        <th>Journey Date</th>
+        <th>Fare</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+    </tr>
 
-    {{details[0].name}}
-</p>
+    {{#each details as |row|}}
+    <tr>
+        {{#each row as |val|}}
+        <td>{{val}}</td>
+        {{/each}}
+    </tr>
+
+    {{/each}}
+</table>
