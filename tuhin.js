@@ -23,23 +23,38 @@ app.get('/', (req, res) => {
 app.get('/signup', (req, res) => {
     res.render('signup', {})
 })
+
 app.get('/dashboard', (req, res) => {
-    res.render('dashboard', {})})
+    res.render('dashboard', {
+        details: [
+            {
+                name: 'shrijon'
+            },//tuple 1
+            {
+                name: 'tuhin'
+            },//tuple 2
+            {
+                name: 'suman'
+            }//tuple 3
+        ],
+        tablename: 'passengers',
+        mysqlmetadata: {
+            id: 234,
+        }
+    })
+})
 
 
 // menu (home, contact, about)
 
-app.get('/about',(req,res)=>
-{
-    res.render('about',{})
+app.get('/about', (req, res) => {
+    res.render('about', {})
 })
-app.get('/contact',(req,res)=>
-{
-    res.render('contact',{})
+app.get('/contact', (req, res) => {
+    res.render('contact', {})
 })
-app.get('/home',(req,res)=>
-{
-    res.render('login',{})
+app.get('/home', (req, res) => {
+    res.render('login', {})
 })
 
 
