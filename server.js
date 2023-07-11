@@ -18,7 +18,7 @@ connection.connect((err) => {
     if (err)
         console.log(err)
     else
-        console.log("successful")
+        console.log("Connected to DB")
 })
 
 app.engine('handlebars', hbs.engine());
@@ -29,8 +29,12 @@ app.set('views', './Views')
 // simple query
 
 app.use(express.urlencoded({ extended: true }))
-app.post('/', (req, res) => {
 
+app.get('/', (req, res) => {
+    res.render('homepage', {})
+})
+
+app.post('/', (req, res) => {
     query = `select * 
     from booking NATURAL JOIN passenger
     where name='${req.body.name}'`
