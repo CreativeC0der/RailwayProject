@@ -1,22 +1,41 @@
-<table border="1px">
-    <tr>
-        <th>Account number</th>
-        <th>Booking ID</th>
-        <th>Train Number</th>
-        <th>Journey Date</th>
-        <th>Fare</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Address</th>
-    </tr>
 
-    {{#each details as |row|}}
-    <tr>
-        {{#each row as |val|}}
-        <td>{{val}}</td>
+    <nav>
+      <ul class="top-menu">
+        <li>{{name}}</li>
+        <li>{{email}}</li>
+      </ul>
+    </nav>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Booking ID</th>
+          <th>Train Number</th>
+          <th>Journey Date</th>
+          <th>Fare</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each bookings}}
+          <tr>
+            <td>{{booking_id}}</td>
+            <td>{{train_number}}</td>
+            <td>{{journey_date}}</td>
+            <td>{{fare}}</td>
+            <td><button
+                class="delete-button"
+                data-booking-id="{{booking_id}}"
+              >Delete</button></td>
+          </tr>
         {{/each}}
-    </tr>
+      </tbody>
+    </table>
 
-    {{/each}}
-</table>
+    <style>
+      table { border-collapse: collapse; width: 100%; } th, td { padding: 8px;
+      text-align: left; border-bottom: 1px solid #ddd; } .delete-button {
+      background-color: #c00b23; color: white; border: none; padding: 5px 10px;
+      cursor: pointer; } .delete-button:hover { background-color: #8c091c; }
+
+    </style>

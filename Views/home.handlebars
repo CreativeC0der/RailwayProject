@@ -1,17 +1,57 @@
 <div class="container">
-  <div class="row">
-    <div class="col-6">
-      <p class="h1">lthis is home</p>
-      <form action="passenger-login" method="get">
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-        </div>
-        <br>
-        <input type="submit" class="btn btn-success">
-      </form>
-    </div>
 
-
+  <div class="col text-center center">
+    <a href="/passenger-login" class="pass">Passenger Login</a>
   </div>
+<br>
+<br>
+
+  <div class="col text-center center" style="">
+    <a href="/admin-login" class="admin">Admin Login</a>
+  </div>
+
 </div>
+
+<style>
+  .center { display: flex; justify-content: center; align-items: center; } 
+  .pass {
+  display: block; 
+    width: 250%; 
+    height: 200px;  
+    transition: all .5s ease;
+    color: #08fd00;
+    border: 3px solid rgb(255, 1, 1);
+    font-family:'Montserrat', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    padding: 70px 28px; 
+    font-size: 50px; 
+    cursor: pointer; 
+    background-color : transparent;
+    outline: none;
+    border-radius: 100px;
+   }
+  .admin {
+    display: block; 
+    width: 250%; 
+    height: 200px;  
+    transition: all .5s ease;
+    color: #44ff00;
+    border: 3px solid rgb(255, 0, 0);
+    font-family:'Montserrat', sans-serif;
+    text-transform: uppercase;
+    line-height: 1;
+    padding: 70px 28px; 
+    font-size: 50px; 
+    cursor: pointer; 
+    background-color : transparent;
+    outline: none;
+    border-radius: 100px;
+    }
+a:hover {
+    color: #ff0000;
+    background-color: rgb(255, 230, 0)181;
+    text-decoration: none;
+}
+</style>
