@@ -24,27 +24,45 @@ app.get('/', (req, res) => {
 app.get('/signup', (req, res) => {
     res.render('signup', {})
 })
+
 app.get('/dashboard', (req, res) => {
     res.render('dashboard', {
+<<<<<<< HEAD
         name: "tuhin",
         accno: 1234
 
     })})
+=======
+        details: [
+            {
+                name: 'shrijon'
+            },//tuple 1
+            {
+                name: 'tuhin'
+            },//tuple 2
+            {
+                name: 'suman'
+            }//tuple 3
+        ],
+        tablename: 'passengers',
+        mysqlmetadata: {
+            id: 234,
+        }
+    })
+})
+>>>>>>> 7e01102b2d769836d3a112c0e799d636fb43a661
 
 
 // menu (home, contact, about)
 
-app.get('/about',(req,res)=>
-{
-    res.render('about',{})
+app.get('/about', (req, res) => {
+    res.render('about', {})
 })
-app.get('/contact',(req,res)=>
-{
-    res.render('contact',{})
+app.get('/contact', (req, res) => {
+    res.render('contact', {})
 })
-app.get('/home',(req,res)=>
-{
-    res.render('login',{})
+app.get('/home', (req, res) => {
+    res.render('login', {})
 })
 
 
