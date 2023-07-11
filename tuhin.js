@@ -12,6 +12,7 @@ app.engine('handlebars', hbs.engine());
 // initialize views and Handlebars
 app.set('view engine', 'handlebars')
 app.set('views', './Views')
+console.log("server started")
 
 // simple query
 
@@ -24,7 +25,11 @@ app.get('/signup', (req, res) => {
     res.render('signup', {})
 })
 app.get('/dashboard', (req, res) => {
-    res.render('dashboard', {})})
+    res.render('dashboard', {
+        name: "tuhin",
+        accno: 1234
+
+    })})
 
 
 // menu (home, contact, about)
