@@ -1,5 +1,5 @@
 
-  <nav class="navbar navbar-light" style="background-color: rgb(255, 251, 0);">
+<nav class="navbar navbar-light" style="background-color: rgb(255, 251, 0);">
   <ul class="nav navbar-nav">
       <li><strong> Hi, </strong>{{name}}</a></li>
     </ul>
@@ -10,7 +10,7 @@
     </ul>
     
 </nav>
-
+    
     <table>
       <thead>
         <tr>
@@ -43,11 +43,36 @@
   <marquee>
     <p style="font-family:cursive">want to make a new booking ?</p>
   </marquee>
-  <a href="/book?acc_num={{acc_num}}">
-  <button class="btn btn-success">click here to book </button>
-  </a>
 </div>
 
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{#each details}}
+        {{acc_num}}
+        {{src}}
+        {{dest}}
+        {{/each}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
     <style>
@@ -64,3 +89,5 @@
 .top-menu li {
   margin-right: 10px;
 }</style>
+
+
