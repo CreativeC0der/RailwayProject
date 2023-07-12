@@ -1,10 +1,15 @@
 
-    <nav>
-      <ul class="top-menu">
-        <li>{{name}}</li>
-        <li>{{email}}</li>
-      </ul>
-    </nav>
+  <nav class="navbar navbar-light" style="background-color: rgb(255, 251, 0);">
+  <ul class="nav navbar-nav">
+      <li><strong> Hi, </strong>{{name}}</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/home">
+      <button type="button" class="btn btn-outline-danger">logout</button>
+      </a></li>
+    </ul>
+    
+</nav>
 
     <table>
       <thead>
@@ -17,25 +22,45 @@
         </tr>
       </thead>
       <tbody>
-        {{#each bookings}}
+        {{#each details}}
           <tr>
             <td>{{booking_id}}</td>
             <td>{{train_number}}</td>
             <td>{{journey_date}}</td>
             <td>{{fare}}</td>
-            <td><button
+            <td>
+              <a href="/cancel?bid={{booking_id}}">
+                 <button
                 class="delete-button"
-                data-booking-id="{{booking_id}}"
-              >Delete</button></td>
+              >Cencel booking</button></td>
+              </a>
           </tr>
         {{/each}}
       </tbody>
     </table>
+
+<div class="container">
+  <marquee>
+    <p style="font-family:cursive">want to make a new booking ?</p>
+  </marquee>
+  <a href="/book?acc_num={{acc_num}}">
+  <button class="btn btn-success">click here to book </button>
+  </a>
+</div>
+
+
 
     <style>
       table { border-collapse: collapse; width: 100%; } th, td { padding: 8px;
       text-align: left; border-bottom: 1px solid #ddd; } .delete-button {
       background-color: #c00b23; color: white; border: none; padding: 5px 10px;
       cursor: pointer; } .delete-button:hover { background-color: #8c091c; }
+    .top-menu {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
 
-    </style>
+.top-menu li {
+  margin-right: 10px;
+}</style>
