@@ -1,43 +1,52 @@
-
-<nav class="navbar navbar-light" style="background-color: rgb(255, 251, 0);">
-  <ul class="nav navbar-nav">
-      <li><strong> Hi, </strong>{{name}}</a></li>
-    </ul>
+<div class="collapse" id="navbarToggleExternalContent">
+  <div class="bg-dark p-4">
+    <h5 class="text-white h4">Name : {{name}}</h5>
+    <span class="text-muted">Email: {{email}}</span>
+    <span class="text-muted">Address: {{address}}</span>
+  </div>
+</div>
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
     <ul class="nav navbar-nav navbar-right">
       <li><a href="/home">
-      <button type="button" class="btn btn-outline-danger">logout</button>
-      </a></li>
+          <button type="button" class="btn btn-outline-danger">logout</button>
+        </a></li>
     </ul>
-    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent"
+      aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
 </nav>
-    
-    <table>
-      <thead>
-        <tr>
-          <th>Booking ID</th>
-          <th>Train Number</th>
-          <th>Journey Date</th>
-          <th>Fare</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each details}}
-          <tr>
-            <td>{{booking_id}}</td>
-            <td>{{train_number}}</td>
-            <td>{{journey_date}}</td>
-            <td>{{fare}}</td>
-            <td>
-              <a href="/cancel?bid={{booking_id}}">
-                 <button
-                class="delete-button"
-              >Cencel booking</button></td>
-              </a>
-          </tr>
-        {{/each}}
-      </tbody>
-    </table>
+<nav class="navbar navbar-light" style="background-color: rgb(255, 251, 0);">
+</nav>
+
+<table>
+  <thead>
+    <tr>
+      <th>Booking ID</th>
+      <th>Train Number</th>
+      <th>Journey Date</th>
+      <th>Fare</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each details}}
+    <tr>
+      <td>{{booking_id}}</td>
+      <td>{{train_number}}</td>
+      <td>{{journey_date}}</td>
+      <td>{{fare}}</td>
+      <td>
+        <a href="/cancel?bid={{booking_id}}">
+          <button class="delete-button">Cencel booking</button>
+      </td>
+      </a>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
 
 <div class="container">
   <marquee>
@@ -48,7 +57,7 @@
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
+  New Booking
 </button>
 
 <!-- Modal -->
@@ -60,34 +69,90 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        {{#each details}}
-        {{acc_num}}
-        {{src}}
-        {{dest}}
-        {{/each}}
+        <form>
+          Booking will happens for this account number : <input type="text" id="myText" value="{{accnum}}" disabled>
+          <div class="form-group">
+            <label for="src">Arrival Station:</label>
+            <select class="form-control" id="src" name="src">
+              {{#each stations}}
+              <option value="{{station_code}}">{{station_name}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="dept">Departure Station:</label>
+            <select class="form-control" id="dept" name="dept">
+              {{#each stations}}
+              <option value="{{station_code}}">{{station_name}}</option>
+              {{/each}}
+            </select>
+          </div>
+        </form>
       </div>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-success" onclick="getOption()">Continue Booking</button>
       </div>
     </div>
   </div>
 </div>
 
 
-    <style>
-      table { border-collapse: collapse; width: 100%; } th, td { padding: 8px;
-      text-align: left; border-bottom: 1px solid #ddd; } .delete-button {
-      background-color: #c00b23; color: white; border: none; padding: 5px 10px;
-      cursor: pointer; } .delete-button:hover { background-color: #8c091c; }
-    .top-menu {
-  display: flex;
-  list-style-type: none;
-  padding: 0;
-}
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
 
-.top-menu li {
-  margin-right: 10px;
-}</style>
+  th,
+  td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .delete-button {
+    background-color: #c00b23;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+
+  .delete-button:hover {
+    background-color: #8c091c;
+  }
+
+  .top-menu {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .top-menu li {
+    margin-right: 10px;
+  }
+</style>
 
 
+<script>
+
+
+  function getOption() {
+    var accnum = document.getElementById("myText").value;
+    var src = document.getElementById('src').value;
+    var dept = document.getElementById('dept').value;
+    if (src === dept) {
+      alert('Arrival and Departure stations cannot be the same!');
+    }
+    console.log(src);
+    console.log(dept);
+    console.log(accnum);
+    window.location.href = "/book?accnum=" + accnum + "&src=" + src + "&dept=" + dept;
+
+  }
+
+
+</script>

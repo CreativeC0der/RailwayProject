@@ -41,15 +41,10 @@ app.get('/dashboard', (req, res) => {
 
             },
             {
-                acc_num: 5,
                 booking_id: 5,
                 train_number: 12345,
                 journey_date: '2023-06-19T18:30:00.000Z',
                 fare: 1000,
-                name: 'tuhin',
-                email: 'shirjon0133@gmail.com',
-                phone: 2147483647,
-                address: 'behala'
             },
         ],
         stations: [
@@ -57,6 +52,16 @@ app.get('/dashboard', (req, res) => {
                 location: 'sealdah',
                 station_code: 'SDH',
                 station_name: 'Sealdah Junction'
+            },
+            {
+                location: 'canning',
+                station_code: 'CNG',
+                station_name: 'Canning'
+            },
+            {
+                location: 'piali',
+                station_code: 'PLF',
+                station_name: 'Pilai'
             }
         ]
     })
