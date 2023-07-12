@@ -27,11 +27,13 @@ app.get('/signup', (req, res) => {
 
 app.get('/dashboard', (req, res) => {
     res.render('dashboard', {
-        name: 'Shrijon',
-        email: 'shrijon1234@gmail.com',
-        acc_num: 4,
-        phone: 2147483647,
-        address: 'behala',
+        userData: {
+            name: 'Shrijon',
+            email: 'shrijon1234@gmail.com',
+            acc_num: 4,
+            phone: 2147483647,
+            address: 'behala',
+        },
         details: [
             {
                 booking_id: 4,
@@ -92,6 +94,13 @@ app.get('/admin-login', (req, res) => {
 //query=acc_num,src,dest
 app.get('/book', (req, res) => {
     res.render('book', {
+        userData: {
+            name: 'Shrijon',
+            email: 'shrijon1234@gmail.com',
+            acc_num: 4,
+            phone: 2147483647,
+            address: 'behala',
+        },
         result: [
             {
                 destination: 'sealdah',

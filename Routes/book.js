@@ -18,13 +18,16 @@ connection.connect((err) => {
 
 app.get('/book', (req, res) => {
     console.log(req.query);
+    console.log('Global start------------')
+    console.log(global.userData);
+    console.log('Global start------------')
     query = `select * from train where
             origin="${req.query.src}" AND destination="${req.query.dept}"`;
     connection.query(query, (err, result, field) => {
         if (err)
             res.send('query error');
-        console.log(result);
-        res.render('book', { result: result });
+        console.log({ userData: userData, result: result });
+        res.render('book', { userData: userData, result: result });
     })
 });
 

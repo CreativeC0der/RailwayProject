@@ -17,7 +17,7 @@ connection.connect((err) => {
 })
 
 app.post('/dashboard', (req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
 
     var responseData = {};
     query = `select name,email,acc_num,phone,address 
@@ -26,9 +26,11 @@ app.post('/dashboard', (req, res) => {
     connection.query(query, (err, results, fields) => {
         if (err)
             console.log(err);
-        if (result.length() == 0)
-            res.send('User not found');
-        responseData = results[0];
+
+        console.log('userdata=');
+        console.log(results[0]);
+        global.userData = { ...results[0] };
+        responseData.userData = { ...userData };
         query = `select booking_id,train_number,journey_date,fare
         from booking NATURAL JOIN passenger
         where acc_num='${req.body.accnum}' AND email='${req.body.email}'`
@@ -42,11 +44,11 @@ app.post('/dashboard', (req, res) => {
 
             query = `select * from station`;
             connection.query(query, (err, results, fields) => {
-                console.log(results);
+                //console.log(results);
 
                 responseData.stations = results;
-                console.log(`response=`);
-                console.log(responseData);
+                //console.log(`response=`);
+                //console.log(responseData);
                 res.render('dashboard', responseData);
             });
 
