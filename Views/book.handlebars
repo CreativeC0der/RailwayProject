@@ -17,7 +17,7 @@
                 <td>{{origin}}</td>
                 <td>{{destination}}</td>
                 <td>
-                    <button type="button" class="book-button" data-bs-toggle="modal" data-bs-target="#trainModal">Book
+                    <button type="button" class="book-button" data-bs-toggle="modal" data-bs-target="#trainModal" onclick="GetNumber({{train_number}})" >Book
                         Seat</button>
                 </td>
             </tr>
@@ -29,11 +29,11 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="trainModalLabel">You are booking Seat for <label id="modaltrain" value="{{train_number}}"> train </h1>
+                    <h1 class="modal-title fs-5" id="trainModalLabel">You are booking Seat for <span id="modaltrain">  </span> train </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="/book/overview" method="post" >
                         <div>
                             <label for="numSeats">Number of Seats:</label>
                             <input type="number" id="numSeats" name="numSeats" min="1" max="10" required />
@@ -62,7 +62,6 @@
                                 required />
                             
                         </div>
-
                         <input type="submit" value="Book Now" />
                     </form>
                 </div>
@@ -147,3 +146,11 @@
         background-color: #45a049;
     }
 </style>
+
+
+<script>
+    function GetNumber(trainNumber) {
+    console.log("Train Number: " + trainNumber);
+    document.getElementById("modaltrain").textContent = trainNumber;
+}
+</script>
