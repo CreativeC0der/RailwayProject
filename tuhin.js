@@ -136,17 +136,6 @@ app.get('/book/overview', (req, res) => {
     })
 })
 
-/*query={
-  jndt: '2023-07-10',
-  tnum: '12345',
-  seattype: 'AC',
-  seatnum: '2'
-}*/
-app.get('/book/overview', (req, res) => {
-    res.render('overview', {
-        //pending
-    })
-})
 // for image
 app.use(express.static('Views'));
 app.use('/images', express.static('images'));
