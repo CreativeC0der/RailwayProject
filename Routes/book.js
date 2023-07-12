@@ -19,13 +19,12 @@ connection.connect((err) => {
 app.get('/book', (req, res) => {
     console.log(req.query);
     query = `select * from train where
-            origin="${req.query.src}" AND destination="${req.query.dest}"`;
+            origin="${req.query.src}" AND destination="${req.query.dept}"`;
     connection.query(query, (err, result, field) => {
         if (err)
             res.send('query error');
         console.log(result);
-        res.send(result);
-        //res.render('book', { result: result });
+        res.render('book', { result: result });
     })
 });
 
