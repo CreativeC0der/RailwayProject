@@ -29,17 +29,16 @@ app.get('/dashboard', (req, res) => {
     res.render('dashboard', {
         name: 'Shrijon',
         email: 'shrijon1234@gmail.com',
+        accnum: 4,
+        phone: 2147483647,
+        address: 'behala',
         details: [
             {
-                acc_num: 4,
                 booking_id: 4,
                 train_number: 12345,
                 journey_date: '2023-06-19T18:30:00.000Z',
                 fare: 1000,
-                name: 'shrijon',
-                email: 'shirjon0133@gmail.com',
-                phone: 2147483647,
-                address: 'behala'
+
             },
             {
                 acc_num: 5,
@@ -52,6 +51,13 @@ app.get('/dashboard', (req, res) => {
                 phone: 2147483647,
                 address: 'behala'
             },
+        ],
+        stations: [
+            {
+                location: 'sealdah',
+                station_code: 'SDH',
+                station_name: 'Sealdah Junction'
+            }
         ]
     })
 })
@@ -92,6 +98,18 @@ app.get('/book', (req, res) => {
     })
 })
 
+/*query={
+  accnum: '4',
+  jndt: '2023-07-10',
+  tnum: '12345',
+  seattype: 'AC',
+  seatnum: '2'
+}*/
+app.get('/book/overview', (req, res) => {
+    res.render('overview', {
+        //pending
+    })
+})
 // for image
 app.use(express.static('Views'));
 app.use('/images', express.static('images'));
