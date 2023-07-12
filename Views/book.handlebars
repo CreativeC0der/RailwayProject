@@ -1,8 +1,57 @@
 <div class="container">
-    <p>available trains</p>
-    <ul>
-        {{#each result}}
-        <li>{{train_name}}</li>
-        {{/each}}
-    </ul>
+
+    <form>
+        <p>Select a train:</p>
+        <ol>
+            {{#each result}}
+            <li>
+                <input type="radio" id="{{train_number}}" name="train" value="{{train_name}}" />
+                <label for="{{train_number}}">{{train_name}}</label>
+            </li>
+            {{/each}}
+        </ol>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#trainModal">
+            BOOK Seat
+        </button>
+    </form>
+    <div class="modal fade" id="trainModal" tabindex="-1" aria-labelledby="trainModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="trainModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/booking" method="POST">
+                        <label for="numSeats">Number of Seats:</label>
+                        <input type="number" id="numSeats" name="numSeats" min="1" max="10" required />
+
+                        <label for="journeyDate">Journey Date:</label>
+                        <input type="date" id="journeyDate" name="journeyDate" required />
+
+                        <label for="seatType">Seat Type:</label>
+                        <select id="seatType" name="seatType" required>
+                            <option value="economy">Economy</option>
+                            <option value="business">Business</option>
+                            <option value="firstClass">First Class</option>
+                        </select>
+
+                        <label for="mealPreference">Meal Preference:</label>
+                        <input type="radio" id="mealPreference" name="mealPreference" value="vegetarian" required />
+                        <label for="mealPreference">Vegetarian</label>
+                        <input type="radio" id="mealPreference" name="mealPreference" value="nonVegetarian" required />
+                        <label for="mealPreference">Non-Vegetarian</label>
+
+                        <input type="submit" value="Book Now" />
+                    </form>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" onclick="getOption()">Continue Booking</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

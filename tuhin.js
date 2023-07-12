@@ -29,7 +29,7 @@ app.get('/dashboard', (req, res) => {
     res.render('dashboard', {
         name: 'Shrijon',
         email: 'shrijon1234@gmail.com',
-        accnum: 4,
+        acc_num: 4,
         phone: 2147483647,
         address: 'behala',
         details: [
@@ -98,6 +98,18 @@ app.get('/book', (req, res) => {
                 origin: 'budge-budge',
                 train_name: 'budge-budge local',
                 train_number: 12345
+            },
+            {
+                destination: 'sealdah',
+                origin: 'canning',
+                train_name: 'canning local',
+                train_number: 23456
+            },
+            {
+                destination: 'sonapur',
+                origin: 'sealdah',
+                train_name: 'sonarpur local',
+                train_number: 78901
             }
         ]
     })

@@ -70,7 +70,7 @@
       </div>
       <div class="modal-body">
         <form>
-          Booking will happens for this account number : <input type="text" id="myText" value="{{accnum}}" disabled>
+          Booking will happens for this account number : <input type="text" id="myText" value="{{acc_num}}" disabled>
           <div class="form-group">
             <label for="src">Arrival Station:</label>
             <select class="form-control" id="src" name="src">
@@ -136,21 +136,24 @@
   }
 </style>
 
-
 <script>
 
 
   function getOption() {
-    var accnum = document.getElementById("myText").value;
+    var acc_num = document.getElementById("myText").value;
     var src = document.getElementById('src').value;
     var dept = document.getElementById('dept').value;
     if (src === dept) {
       alert('Arrival and Departure stations cannot be the same!');
     }
+    else
+    {
     console.log(src);
     console.log(dept);
-    console.log(accnum);
-    window.location.href = "/book?accnum=" + accnum + "&src=" + src + "&dept=" + dept;
+    console.log(acc_num);
+    window.location.href = "/book?acc_num=" + acc_num + "&src=" + src + "&dept=" + dept;
+    }
+    
 
   }
 
