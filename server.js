@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }))
 
 //Routing
 
-app.get('/', (req, res) => {
+app.get('/home', (req, res) => {
     res.render('login', {})
 })
 
@@ -32,4 +32,6 @@ app.get('/contact', contactRoute);
 
 app.post('/dashboard', dashboardRoute);
 
-app.listen(3000, 'localhost');
+app.listen(3000, 'localhost', () => {
+    console.log('listening on port 3000');
+});
