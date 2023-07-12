@@ -124,6 +124,8 @@ app.get('/book', (req, res) => {
     })
 })
 
+//book details
+
 /*query={
   jndt: '2023-07-10',
   tnum: '12345',
