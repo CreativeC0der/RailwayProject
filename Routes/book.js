@@ -28,6 +28,13 @@ app.get('/book', (req, res) => {
     })
 });
 
+/*query={
+  accnum: '4',
+  jndt: '2023-07-10',
+  tnum: '12345',
+  seattype: 'AC',
+  seatnum: '2'
+}*/
 app.get('/book/overview', (req, res) => {
     console.log(req.query);
     query = `select count(*)
@@ -38,7 +45,6 @@ app.get('/book/overview', (req, res) => {
             log('error');
         console.log(result);
     });
-    console.log('not blocked');
 });
 
 module.exports = app;
