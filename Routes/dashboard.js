@@ -26,7 +26,8 @@ app.post('/dashboard', (req, res) => {
     connection.query(query, (err, results, fields) => {
         if (err)
             console.log(err);
-        console.log(results);
+        if (result.length() == 0)
+            res.send('User not found');
         responseData = results[0];
         query = `select booking_id,train_number,journey_date,fare
         from booking NATURAL JOIN passenger
