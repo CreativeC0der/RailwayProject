@@ -89,7 +89,7 @@ app.get('/admin-login', (req, res) => {
 })
 
 //TEMPLATE
-//query=accnum,src,dest
+//query=acc_num,src,dest
 app.get('/book', (req, res) => {
     res.render('book', {
         result: [
@@ -116,7 +116,6 @@ app.get('/book', (req, res) => {
 })
 
 /*query={
-  accnum: '4',
   jndt: '2023-07-10',
   tnum: '12345',
   seattype: 'AC',
@@ -129,7 +128,6 @@ app.get('/book/overview', (req, res) => {
 })
 
 /*query={
-  accnum: '4',
   jndt: '2023-07-10',
   tnum: '12345',
   seattype: 'AC',
