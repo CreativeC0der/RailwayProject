@@ -16,19 +16,30 @@ connection.connect((err) => {
         console.log("Connected to DB")
 })
 
-app.post('/dashboard', (req, res) => {
-    console.log(req.body);
-    query = `select * 
-    from booking NATURAL JOIN passenger
-    where acc_num='${req.body.accnum}' AND email='${req.body.email}'`
-
-    connection.query(query, (err, results, fields) => {
+app.get('/book', (req, res) => {
+    console.log(req.query);
+    query = `select * from train where
+            origin="${req.query.src}" AND destination="${req.query.dest}"`;
+    connection.query(query, (err, result, field) => {
         if (err)
-            console.log('ERRORRRR');
+            res.send('query error');
+        console.log(result);
+        res.send(result);
+        //res.render('book', { result: result });
+    })
+});
 
-        console.log(results);
-        res.render('dashboard', { details: results })
+app.get('/book/overview', (req, res) => {
+    console.log(req.query);
+    query = `select count(*)
+            from seat_inventory 
+            where booking_status=NULL`
+    connection.query(query, (err, result, fields) => {
+        if (err)
+            log('error');
+        console.log(result);
     });
+    console.log('not blocked');
 });
 
 module.exports = app;

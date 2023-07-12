@@ -77,6 +77,21 @@ app.get('/admin-login', (req, res) => {
     res.render('login', {})
 })
 
+//TEMPLATE
+//query=accnum,src,dest
+app.get('/book', (req, res) => {
+    res.render('book', {
+        result: [
+            {
+                destination: 'sealdah',
+                origin: 'budge-budge',
+                train_name: 'budge-budge local',
+                train_number: 12345
+            }
+        ]
+    })
+})
+
 // for image
 app.use(express.static('Views'));
 app.use('/images', express.static('images'));
