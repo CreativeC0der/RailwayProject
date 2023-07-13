@@ -1,4 +1,103 @@
 {{>navbar}}
-<p class="h4">
- all details should be display here
-</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Train Ticket Booking Details</title>
+  <style>
+    body {
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 5px 0;
+      color: #777;
+    }
+
+    .total-fare {
+      margin-top: 20px;
+      text-align: right;
+    }
+
+    .btn-payment {
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Train Ticket Booking Details</h1>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Passenger Information:</h2>
+        <p><strong>Name:</strong> John Doe</p>
+        <p><strong>Age:</strong> 30</p>
+        <p><strong>Gender:</strong> Male</p>
+        <p><strong>Contact Number:</strong> 1234567890</p>
+        <p><strong>Email Address:</strong> johndoe@example.com</p>
+      </div>
+
+      <div class="col-md-6">
+        <h2>Journey Details:</h2>
+        <p><strong>From:</strong> New York City</p>
+        <p><strong>To:</strong> Los Angeles</p>
+        <p><strong>Date:</strong> July 20, 2023</p>
+        <p><strong>Class/Coach:</strong> AC</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Seat/Coach Preference:</h2>
+        <p><strong>Lower/Upper Berth Preference:</strong> Lower Berth</p>
+      </div>
+
+      <div class="col-md-6">
+        <h2>Additional Services:</h2>
+        <p><strong>Food Preference:</strong> Vegetarian</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 total-fare">
+        <h2>Total Fare:</h2>
+        <p>$100</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 btn-payment">
+        <button onclick="redirectToPayment()" class="btn btn-warning">Proceed to Payment</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function redirectToPayment() {
+      // Replace 'payment-page.html' with the actual URL of the payment page
+      window.location.href = 'payment-page.html';
+    }
+  </script>
+</body>
+</html>
