@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2023 at 07:22 AM
+-- Generation Time: Jul 13, 2023 at 09:30 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -32,16 +32,22 @@ CREATE TABLE `booking` (
   `train_number` int(11) DEFAULT NULL,
   `journey_date` date DEFAULT NULL,
   `fare` float DEFAULT NULL,
-  `acc_num` int(11) DEFAULT NULL
+  `acc_num` int(11) DEFAULT NULL,
+  `seat_type` varchar(20) NOT NULL,
+  `no_of_seats` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`booking_id`, `train_number`, `journey_date`, `fare`, `acc_num`) VALUES
-(3, 12345, '2023-06-20', 1000, 3),
-(4, 12345, '2023-06-20', 1000, 4);
+INSERT INTO `booking` (`booking_id`, `train_number`, `journey_date`, `fare`, `acc_num`, `seat_type`, `no_of_seats`) VALUES
+(1624, 12345, '2023-07-30', 4000, 4, '1A', 2),
+(3354, 12345, '2023-07-15', 4000, 4, '1A', 2),
+(3792, 12345, '2023-07-14', 3000, 4, '2A', 2),
+(6373, 12345, '0000-00-00', 12000, 4, '1A', 6),
+(8372, 12345, '2023-07-27', 3000, 4, '2A', 2),
+(9443, 12345, '2023-07-28', 3000, 4, '2A', 2);
 
 -- --------------------------------------------------------
 
@@ -96,29 +102,23 @@ CREATE TABLE `payment` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `routes`
---
-
-CREATE TABLE `routes` (
-  `route_id` varchar(30) NOT NULL,
-  `destination` varchar(30) DEFAULT NULL,
-  `distance` int(11) DEFAULT NULL,
-  `train_number` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `seat_inventory`
 --
 
 CREATE TABLE `seat_inventory` (
   `fare` float DEFAULT NULL,
-  `seat_integer` varchar(20) NOT NULL,
-  `seat_type` varchar(20) DEFAULT NULL,
-  `booking_status` varchar(20) DEFAULT NULL,
-  `train_number` int(11) DEFAULT NULL
+  `available_seats` int(20) NOT NULL,
+  `seat_type` varchar(20) NOT NULL,
+  `train_number` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `seat_inventory`
+--
+
+INSERT INTO `seat_inventory` (`fare`, `available_seats`, `seat_type`, `train_number`) VALUES
+(2000, 0, '1A', 12345),
+(1500, 0, '2A', 12345);
 
 -- --------------------------------------------------------
 
@@ -128,10 +128,18 @@ CREATE TABLE `seat_inventory` (
 
 CREATE TABLE `station` (
   `station_code` varchar(20) NOT NULL,
-  `route_id` varchar(20) DEFAULT NULL,
   `station_name` varchar(30) DEFAULT NULL,
   `location` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `station`
+--
+
+INSERT INTO `station` (`station_code`, `station_name`, `location`) VALUES
+('BGB', 'Budge Budge', 'Budge Budge Junction'),
+('CANG', 'Canning', 'Canning District'),
+('SDH', 'Sealdah', 'Sealdah Junction');
 
 -- --------------------------------------------------------
 
@@ -151,7 +159,7 @@ CREATE TABLE `train` (
 --
 
 INSERT INTO `train` (`destination`, `origin`, `train_name`, `train_number`) VALUES
-('sealdah', 'budge-budge', 'budge-budge local', 12345);
+('SDH', 'BGB', 'budge-budge local', 12345);
 
 --
 -- Indexes for dumped tables
@@ -186,31 +194,25 @@ ALTER TABLE `payment`
   ADD KEY `fk_payment` (`booking_id`);
 
 --
--- Indexes for table `routes`
---
-ALTER TABLE `routes`
-  ADD PRIMARY KEY (`route_id`),
-  ADD KEY `fk_routes` (`train_number`);
-
---
 -- Indexes for table `seat_inventory`
 --
 ALTER TABLE `seat_inventory`
-  ADD PRIMARY KEY (`seat_integer`),
-  ADD KEY `fk_seat_inventory` (`train_number`);
+  ADD PRIMARY KEY (`train_number`,`seat_type`),
+  ADD KEY `fk_train` (`train_number`) USING BTREE;
 
 --
 -- Indexes for table `station`
 --
 ALTER TABLE `station`
-  ADD PRIMARY KEY (`station_code`),
-  ADD KEY `fk_station` (`route_id`);
+  ADD PRIMARY KEY (`station_code`);
 
 --
 -- Indexes for table `train`
 --
 ALTER TABLE `train`
-  ADD PRIMARY KEY (`train_number`);
+  ADD PRIMARY KEY (`train_number`),
+  ADD KEY `fk_dest` (`destination`),
+  ADD KEY `fk_origin` (`origin`);
 
 --
 -- Constraints for dumped tables
@@ -236,22 +238,17 @@ ALTER TABLE `payment`
   ADD CONSTRAINT `fk_payment` FOREIGN KEY (`booking_id`) REFERENCES `booking` (`booking_id`);
 
 --
--- Constraints for table `routes`
---
-ALTER TABLE `routes`
-  ADD CONSTRAINT `fk_routes` FOREIGN KEY (`train_number`) REFERENCES `train` (`train_number`);
-
---
 -- Constraints for table `seat_inventory`
 --
 ALTER TABLE `seat_inventory`
   ADD CONSTRAINT `fk_seat_inventory` FOREIGN KEY (`train_number`) REFERENCES `train` (`train_number`);
 
 --
--- Constraints for table `station`
+-- Constraints for table `train`
 --
-ALTER TABLE `station`
-  ADD CONSTRAINT `fk_station` FOREIGN KEY (`route_id`) REFERENCES `routes` (`route_id`);
+ALTER TABLE `train`
+  ADD CONSTRAINT `fk_dest` FOREIGN KEY (`destination`) REFERENCES `station` (`station_code`),
+  ADD CONSTRAINT `fk_origin` FOREIGN KEY (`origin`) REFERENCES `station` (`station_code`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

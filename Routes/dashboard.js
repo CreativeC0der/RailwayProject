@@ -2,20 +2,6 @@ const express = require('express');
 const mysql = require('mysql2');
 const app = express.Router();
 
-// create the connection to database
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    database: 'railway'
-});
-
-connection.connect((err) => {
-    if (err)
-        console.log(err)
-    else
-        console.log("Connected to DB")
-})
-
 app.post('/dashboard', (req, res) => {
     //console.log(req.body);
 
@@ -31,7 +17,7 @@ app.post('/dashboard', (req, res) => {
         console.log(results[0]);
         global.userData = { ...results[0] };
         responseData.userData = { ...userData };
-        query = `select booking_id,train_number,journey_date,fare
+        query = `select booking_id,train_number,journey_date,fare,seat_type,no_of_seats 
         from booking NATURAL JOIN passenger
         where acc_num='${req.body.accnum}' AND email='${req.body.email}'`
 

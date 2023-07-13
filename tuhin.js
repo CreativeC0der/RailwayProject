@@ -40,13 +40,8 @@ app.get('/dashboard', (req, res) => {
                 train_number: 12345,
                 journey_date: '2023-06-19T18:30:00.000Z',
                 fare: 1000,
-
-            },
-            {
-                booking_id: 5,
-                train_number: 12345,
-                journey_date: '2023-06-19T18:30:00.000Z',
-                fare: 1000,
+                seat_type: '1A',
+                no_of_seats: 4
             },
         ],
         stations: [
@@ -128,19 +123,37 @@ app.get('/book', (req, res) => {
 
 /*query={
   jndt: '2023-07-10',
-  tnum: '12345',
+  tnum: '12345',  //FIX THIS!!!!!
   seattype: 'AC',
   seatnum: '2'
 }*/
-app.get('/book/overview', (req, res) => {
+app.post('/book/overview', (req, res) => {
     res.render('overview', {
-        //pending
+        userData: {
+            name: 'Shrijon',
+            email: 'shrijon1234@gmail.com',
+            acc_num: 4,
+            phone: 2147483647,
+            address: 'behala',
+        },
+        bookingData: {
+            train_number: 12345,
+            booking_id: 4,
+            journey_date: '2023-06-19T18:30:00.000Z',
+            fare: 1000,
+            acc_num: 4,
+            seat_type: '1A',
+            no_of_seats: 2,
+            destination: 'sealdah',
+            origin: 'budge-budge',
+            train_name: 'budge-budge local',
+        },
+        ExtraData: {
+            mealPreference: 'vegetarian',
+            seatPreference: ['upper', 'middle'],
+            age: '30'
+        }
     })
 })
-
-// for image
-app.use(express.static('Views'));
-app.use('/images', express.static('images'));
-
 
 app.listen(3000, 'localhost');
