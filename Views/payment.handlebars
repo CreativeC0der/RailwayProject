@@ -1,6 +1,5 @@
     {{>navbar}}
   <h1>Payment Details Form</h1>
-
   <form action="/dashboard" method="get">
   <div>
     <p><strong>Name :</strong>{{name}} </p>
@@ -22,8 +21,8 @@
     <input type="hidden" id="acc_num" name="acc_num" value="{{acc_num}}">
     <input type="hidden" id="train_num" name="train_number" value="{{train_number}}">
     <div>
-      <button type="submit" name="submit" value="accept" onclick="getsuccess()" >Accept</button>
-      <button type="submit" name="submit" value="decline" onclick="getfailed()">Decline</button>
+      <button type="submit" name="submit" value="accept" onclick="getsuccess()" class="suc" >Accept</button>
+      <button type="submit" name="submit" value="decline" onclick="getfailed()" class="fail" >Decline</button>
     </div>
   </form>
 
@@ -37,3 +36,55 @@
       document.getElementById("payment_status").value = "failed";
     }
 </script>
+
+<style>
+  form {
+    width: 400px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+
+  div {
+    margin-bottom: 15px;
+  }
+
+  label {
+    display: inline-block;
+    width: 120px;
+  }
+
+  input[type="number"] {
+    width: 100px;
+  }
+
+  .suc {
+    padding: 10px 20px;
+    background-color: #536DFE;
+    color: rgb(255, 255, 255);
+    border: none ;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+  .suc:hover {
+    background-color: #35c419;
+  }
+.fail{
+    padding: 10px 20px;
+    background-color: #536DFE;
+    color: rgb(255, 255, 255);
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+ .fail:hover {
+    background-color: #0008ff;
+  }
+  select, input[type="number"] {
+    height: 30px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    padding: 2px;
+    width: 200px;
+  }
+</style>
