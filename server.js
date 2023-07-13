@@ -67,4 +67,4 @@ app.get('/book', bookRoute);
 
 app.post('/book/overview', bookRoute);
 
-app.get('/book/overview/payment', bookRoute);
+app.post('/book/payment', bookRoute);

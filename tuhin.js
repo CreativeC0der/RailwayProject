@@ -41,7 +41,10 @@ app.get('/dashboard', (req, res) => {
                 journey_date: '2023-06-19T18:30:00.000Z',
                 fare: 1000,
                 seat_type: '1A',
-                no_of_seats: 4
+                no_of_seats: 4,
+                payment_status: 'PAID',
+                payment_mode: 'UPI',
+                payment_id: 2490
             },
         ],
         stations: [

@@ -12,18 +12,23 @@ app.post('/dashboard', (req, res) => {
     connection.query(query, (err, results, fields) => {
         if (err)
             console.log(err);
+        if (results.length == 0) {
+            res.send('USer not found');
+            return;
+        }
 
         console.log('userdata=');
         console.log(results[0]);
         global.userData = { ...results[0] };
         responseData.userData = { ...userData };
-        query = `select booking_id,train_number,journey_date,fare,seat_type,no_of_seats 
-        from booking NATURAL JOIN passenger
-        where acc_num='${req.body.accnum}' AND email='${req.body.email}'`
+        query = `select booking_id,train_number,journey_date,fare,seat_type,no_of_seats,payment_status,
+        payment_id,payment_mode 
+        from booking NATURAL JOIN payment
+        where acc_num='${req.body.accnum}'`
 
         connection.query(query, (err, results, fields) => {
             if (err)
-                console.log('ERRORRRR');
+                console.log(err);
 
             console.log(results);
             responseData.details = results;
