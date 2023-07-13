@@ -97,13 +97,6 @@ app.post('/book/overview', (req, res) => {
 app.post('/book/payment', (req, res) => {
     console.log('PAYMENT DATA-------------------');
     console.log(req.body);
-    global.userData = {
-        name: 'Shrijon',
-        email: 'shrijon1234@gmail.com',
-        acc_num: 4,
-        phone: 2147483647,
-        address: 'behala',
-    };
     query = `insert into payment values(
         "${req.body.paymentmode}",
         "${Math.floor(Math.random() * 10000)}",
