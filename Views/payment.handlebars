@@ -1,0 +1,39 @@
+    {{>navbar}}
+  <h1>Payment Details Form</h1>
+
+  <form action="/dashboard" method="get">
+  <div>
+    <p><strong>Name :</strong>{{name}} </p>
+  </div>
+    <div>
+      <label for="paymentMode">Payment Mode:</label>
+      <select id="paymentMode" name="paymentMode" required>
+        <option value="card">Card</option>
+        <option value="cash">Cash</option>
+        <option value="upi">UPI</option>
+        <option value="netbanking">Net Banking</option>
+      </select>
+    </div>
+    <div>
+      <label for="amount">Payable amount</label>
+      <input type="number" disabled value="{{total_fare}}"> 
+    </div>
+    <input type="hidden" id="payment_status" name="payment" value="">
+    <input type="hidden" id="acc_num" name="acc_num" value="{{acc_num}}">
+    <input type="hidden" id="train_num" name="train_number" value="{{train_number}}">
+    <div>
+      <button type="submit" name="submit" value="accept" onclick="getsuccess()" >Accept</button>
+      <button type="submit" name="submit" value="decline" onclick="getfailed()">Decline</button>
+    </div>
+  </form>
+
+
+<script>
+    function getsuccess() {
+      document.getElementById("payment_status").value = "success";
+      
+    }
+    function getfailed() {
+      document.getElementById("payment_status").value = "failed";
+    }
+</script>
