@@ -94,13 +94,20 @@ app.post('/book/overview', (req, res) => {
 
 });
 
-//query= bookid
-app.get('/book/overview/payment', (req, res) => {
-    res.render('payment', {
-        name: "shrijon",
-        acc_num: 4,
-        train_number: 12345,
-        total_fare: 4000
+//post=paymentmode,amount,paymentstatus,bookid
+app.post('/book/payment', (req, res) => {
+    console.log(req.body);
+    query = `insert into payment values(
+        "${req.body.paymentmode}",
+        "${Math.floor(Math.random() * 10000)}",
+        "${req.body.amount}",
+        "${req.body.paymentstatus}",
+        "${req.body.bookid}"
+    )`
+    connection.query(query, (err, results, fields) => {
+        if (err)
+            console.log(err);
+        console.log(results);
     })
 })
 module.exports = app;
