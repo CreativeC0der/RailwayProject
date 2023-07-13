@@ -24,13 +24,12 @@ app.get('/book', (req, res) => {
   seatnum: '2'
 }*/
 app.post('/book/overview', (req, res) => {
-    console.log("USER DATA----------");
-    console.log(userData);
-    req.body.tnum = 12345;//MAke this DYNAMIC LATER
+    console.log("TRAIN NUMBER CHECKK----------");
+    console.log(req.body);
     query = `select *
             from seat_inventory
             where seat_type="${req.body.seatType}" 
-            AND train_number=${req.body.tnum} 
+            AND train_number=${req.body.trainNumber} 
             AND available_seats>=${req.body.numSeats}`
     console.log(query);
     connection.query(query, (err, results, fields) => {
@@ -96,7 +95,15 @@ app.post('/book/overview', (req, res) => {
 
 //post=paymentmode,amount,paymentstatus,bookid
 app.post('/book/payment', (req, res) => {
+    console.log('PAYMENT DATA-------------------');
     console.log(req.body);
+    global.userData = {
+        name: 'Shrijon',
+        email: 'shrijon1234@gmail.com',
+        acc_num: 4,
+        phone: 2147483647,
+        address: 'behala',
+    };
     query = `insert into payment values(
         "${req.body.paymentmode}",
         "${Math.floor(Math.random() * 10000)}",
@@ -108,6 +115,9 @@ app.post('/book/payment', (req, res) => {
         if (err)
             console.log(err);
         console.log(results);
+        req.body.acc_num = userData.acc_num;
+        req.body.email = userData.email;
+        res.redirect(307, '/dashboard?accnum=4&email=shirjon0133@gmail.com');
     })
 })
 module.exports = app;

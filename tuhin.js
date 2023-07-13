@@ -158,9 +158,9 @@ app.post('/book/overview', (req, res) => {
     })
 })
 
-//post=paymentmode,paymentstatus,bookid
+//post=paymentmode,paymentstatus,bookid,amount
 app.post('/book/payment', (req, res) => {
-
+    //redirected to dashboard using same userData
 })
 
 //this page should generate payment id and booking id for both success and failed condition
