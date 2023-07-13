@@ -3,9 +3,14 @@ const mysql = require('mysql2');
 const app = express.Router();
 
 app.post('/dashboard', (req, res) => {
-    //console.log(req.body);
 
     var responseData = {};
+    req.body = { ...req.query, ...req.body };
+
+
+    console.log('Dashboard Body--');
+    console.log(req.body);
+
     query = `select name,email,acc_num,phone,address 
     from passenger where 
     acc_num="${req.body.accnum}" AND email="${req.body.email}"`;
@@ -13,7 +18,7 @@ app.post('/dashboard', (req, res) => {
         if (err)
             console.log(err);
         if (results.length == 0) {
-            res.send('USer not found');
+            res.send('USER not found!!!');
             return;
         }
 

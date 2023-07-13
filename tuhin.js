@@ -158,7 +158,7 @@ app.post('/book/overview', (req, res) => {
     })
 })
 
-//post=paymentmode,paymentstatus,bookid
+//post=paymentmode,paymentstatus,bookid,amount
 app.post('/book/payment', (req, res) => {
 
 })
