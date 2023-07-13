@@ -56,9 +56,10 @@
       </div>
       <div class="modal-body">
         <form>
-          Booking will happens for this account number : <input type="text" id="myText" value="{{userData.acc_num}}" disabled>
+          Booking will happens for this account number : <input type="text" id="myText" value="{{userData.acc_num}}"
+            disabled>
           <div class="form-group">
-            <label for="src">Arrival Station:</label>
+            <label for="src">Origin Station:</label>
             <select class="form-control" id="src" name="src">
               {{#each stations}}
               <option value="{{station_code}}">{{station_name}}</option>
@@ -67,7 +68,7 @@
           </div>
           <br>
           <div class="form-group">
-            <label for="dept">Departure Station:</label>
+            <label for="dept">Destination Station:</label>
             <select class="form-control" id="dept" name="dept">
               {{#each stations}}
               <option value="{{station_code}}">{{station_name}}</option>
@@ -132,14 +133,13 @@
     if (src === dept) {
       alert('Arrival and Departure stations cannot be the same!');
     }
-    else
-    {
-    console.log(src);
-    console.log(dept);
-    console.log(acc_num);
-    window.location.href = "/book?acc_num=" + acc_num + "&src=" + src + "&dept=" + dept;
+    else {
+      console.log(src);
+      console.log(dept);
+      console.log(acc_num);
+      window.location.href = "/book?acc_num=" + acc_num + "&src=" + src + "&dept=" + dept;
     }
-    
+
 
   }
 

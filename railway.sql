@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2023 at 09:30 AM
+-- Generation Time: Jul 13, 2023 at 07:58 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -42,12 +42,8 @@ CREATE TABLE `booking` (
 --
 
 INSERT INTO `booking` (`booking_id`, `train_number`, `journey_date`, `fare`, `acc_num`, `seat_type`, `no_of_seats`) VALUES
-(1624, 12345, '2023-07-30', 4000, 4, '1A', 2),
-(3354, 12345, '2023-07-15', 4000, 4, '1A', 2),
-(3792, 12345, '2023-07-14', 3000, 4, '2A', 2),
-(6373, 12345, '0000-00-00', 12000, 4, '1A', 6),
-(8372, 12345, '2023-07-27', 3000, 4, '2A', 2),
-(9443, 12345, '2023-07-28', 3000, 4, '2A', 2);
+(881, 6969, '2023-07-13', 1600, 4, '3A', 2),
+(6316, 6969, '2023-07-14', 1000, 4, 'SL', 2);
 
 -- --------------------------------------------------------
 
@@ -95,9 +91,17 @@ CREATE TABLE `payment` (
   `payment_mode` varchar(10) DEFAULT NULL,
   `payment_id` int(11) NOT NULL,
   `amount` float DEFAULT NULL,
-  `payment_status` varchar(20) DEFAULT NULL,
+  `payment_status` varchar(10) DEFAULT NULL,
   `booking_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`payment_mode`, `payment_id`, `amount`, `payment_status`, `booking_id`) VALUES
+('upi', 4871, 0, 'success', 6316),
+('card', 5719, 0, 'success', 881);
 
 -- --------------------------------------------------------
 
@@ -117,8 +121,10 @@ CREATE TABLE `seat_inventory` (
 --
 
 INSERT INTO `seat_inventory` (`fare`, `available_seats`, `seat_type`, `train_number`) VALUES
+(800, 48, '3A', 6969),
+(500, 98, 'SL', 6969),
 (2000, 0, '1A', 12345),
-(1500, 0, '2A', 12345);
+(1500, 85, '2A', 12345);
 
 -- --------------------------------------------------------
 
@@ -159,6 +165,8 @@ CREATE TABLE `train` (
 --
 
 INSERT INTO `train` (`destination`, `origin`, `train_name`, `train_number`) VALUES
+('CANG', 'SDH', 'canning local', 6969),
+('SDH', 'CANG', 'canning-local-2', 7979),
 ('SDH', 'BGB', 'budge-budge local', 12345);
 
 --
