@@ -1,98 +1,149 @@
 {{>navbar}}
-  <title>Train Ticket Booking Details</title>
-  
-  <div class="container">
-    <h1>Train Ticket Booking Details</h1>
+<title>Train Ticket Booking Details</title>
 
-    <div class="row">
-      <div class="col-md-6">
-        <h2>Passenger Information:</h2>
-        <p><strong>Name:</strong> {{userData.name}}</p>
-        <p><strong>Age:</strong> {{ExtraData.age}}</p>
-        <p><strong>Contact Number:</strong> {{userData.phone}}</p>
-        <p><strong>Email Address:</strong> {{userData.address}}</p>
-      </div>
+<div class="container">
+  <h1>Train Ticket Booking Details</h1>
 
-      <div class="col-md-6">
-        <h2>Journey Details:</h2>
-        <p><strong>Train Number:</strong> {{bookingData.train_number}}</p>
-        <p><strong>From:</strong> {{bookingData.origin}}</p>
-        <p><strong>To:</strong> {{bookingData.destination}}</p>
-        <p><strong>Date:</strong> {{bookingData.journey_date}}</p>
-        <p><strong>Class/Coach:</strong> {{bookingData.seat_type}}</p>
-      </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Passenger Information:</h2>
+      <p><strong>Name:</strong> {{userData.name}}</p>
+      <p><strong>Contact Number:</strong> {{userData.phone}}</p>
+      <p><strong>Email Address:</strong> {{userData.address}}</p>
     </div>
 
-    <div class="row">
-      <div class="col-md-6">
-        <h2>Seat/Coach Preference:</h2>
-        <p><strong>No of Seat :</strong> {{bookingData.no_of_seats}}</p>
-        <p><strong>Lower/Upper Berth Preference:</strong> {{ExtraData.seatPreference}}</p>
-      </div>
-
-      <div class="col-md-6">
-        <h2>Additional Services:</h2>
-        <p><strong>Food Preference:</strong> {{ExtraData.mealPreference}}</p>
-      </div>
+    <div class="col-md-6">
+      <h2>Journey Details:</h2>
+      <p><strong>Train Number:</strong> {{bookingData.train_number}}</p>
+      <p><strong>From:</strong> {{bookingData.origin}}</p>
+      <p><strong>To:</strong> {{bookingData.destination}}</p>
+      <p><strong>Date:</strong> {{bookingData.journey_date}}</p>
+      <p><strong>Class/Coach:</strong> {{bookingData.seat_type}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Seat/Coach Preference:</h2>
+      <p><strong>No of Seat :</strong> {{bookingData.no_of_seats}}</p>
+      <p><strong>Lower/Upper Berth Preference:</strong> {{extraData.seatPreference}}</p>
     </div>
 
-    <div class="row">
-      <div class="col-md-12 total-fare">
-        <h2>Total Fare:</h2>
-        <p>{{ExtraData.total_fare}}</p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12 btn-payment">
-        <button onclick="redirectToPayment()" class="btn btn-warning">Proceed to Payment</button>
-      </div>
+    <div class="col-md-6">
+      <h2>Additional Services:</h2>
+      <p><strong>Food Preference:</strong> {{extraData.mealPreference}}</p>
     </div>
   </div>
 
-  <script>
-    function redirectToPayment() {
-      window.location.href = '/book/overview/payment/';
+  <div class="row">
+    <div class="col-md-12 total-fare">
+      <h2>Total Fare:</h2>
+      <p>{{bookingData.fare}}</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 btn-payment">
+      <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#trainModal">Proceed to Payment</button>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="trainModal" tabindex="-1" aria-labelledby="trainModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/book/payment" method="post">
+          <div>
+            <p><strong>Name :</strong>{{userData.name}} </p>
+          </div>
+          <div>
+            <label for="paymentMode">Payment Mode:</label>
+            <select id="paymentmode" name="paymentmode" required>
+              <option value="card">Card</option>
+              <option value="cash">Cash</option>
+              <option value="upi">UPI</option>
+              <option value="netbanking">Net Banking</option>
+            </select>
+          </div>
+          <br>
+          <div>
+            <label for="amount">Payable amount</label>
+            <input type="number" disabled value="{{bookingData.fare}}">
+          </div>
+          <input type="hidden" id="paymentstatus" name="payment" value="">
+          <input type="hidden" id="bookid" name="bookid" value="{{bookingData.booking_id}}">
+          <br>
+          <div>
+            <input type="submit" value="accept" onclick="getsuccess()" class="btn btn-outline-warning">
+            <input type="submit" value="decline" onclick="getfailed()" class="btn btn-outline-dark">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<script>
+  function getsuccess() {
+      document.getElementById("payment_status").value = "success";
+      
     }
-  </script>
+    function getfailed() {
+      document.getElementById("payment_status").value = "failed";
+    }
+</script>
 
 <style>
-    body {
-      padding: 20px;
-      font-family: Arial, sans-serif;
-      background-color: #f8f8f8;
-    }
+  body {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+  }
 
-    .container {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+  .container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
 
-    h1 {
-      color: #333;
-      margin-bottom: 20px;
-      text-align: center;
-    }
+  h1 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
 
-    h2 {
-      color: #555;
-      margin-bottom: 10px;
-    }
+  h2 {
+    color: #555;
+    margin-bottom: 10px;
+  }
 
-    p {
-      margin: 5px 0;
-      color: #777;
-    }
+  p {
+    margin: 5px 0;
+    color: #777;
+  }
 
-    .total-fare {
-      margin-top: 20px;
-      text-align: right;
-    }
+  .total-fare {
+    margin-top: 20px;
+    text-align: right;
+  }
 
-    .btn-payment {
-      margin-top: 20px;
-      text-align: center;
-    }
-  </style>
+  .btn-payment {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  select, input[type="number"] {
+    height: 30px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    padding: 2px;
+    width: 200px;
+  }
+</style>
