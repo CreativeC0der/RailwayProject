@@ -92,5 +92,15 @@ app.post('/book/overview', (req, res) => {
         })
     })
 
+});
+
+//query= bookid
+app.get('/book/overview/payment', (req, res) => {
+    res.render('payment', {
+        name: "shrijon",
+        acc_num: 4,
+        train_number: 12345,
+        total_fare: 4000
+    })
 })
 module.exports = app;
