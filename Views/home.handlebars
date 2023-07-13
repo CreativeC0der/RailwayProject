@@ -1,57 +1,49 @@
-<div class="container">
+<style>
+ .admin {
+    display: inline-block;
+    padding: 100px 200px;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: transparent;
+    color: #ffc400;
+    border: 2px solid #ffc400;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  .pass {
+    display: inline-block;
+    padding: 100px 150px;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: transparent;
+    color: #000000;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
 
+
+  .pass:hover {
+    background-color: #1e1d1c;
+    color: white;
+  }
+  .admin:hover {
+    background-color: #ffc400;
+    color: rgb(33, 33, 32)
+  }
+</style>
+<div class="container">
+  <br>
   <div class="col text-center center">
     <a href="/passenger-login" class="pass">Passenger Login</a>
   </div>
-<br>
-<br>
-
+  <br>
+  <br>
   <div class="col text-center center" style="">
     <a href="/admin-login" class="admin">Admin Login</a>
   </div>
-
 </div>
-
-<style>
-  .center { display: flex; justify-content: center; align-items: center; } 
-  .pass {
-  display: block; 
-    width: 250%; 
-    height: 200px;  
-    transition: all .5s ease;
-    color: #08fd00;
-    border: 3px solid rgb(255, 1, 1);
-    font-family:'Montserrat', sans-serif;
-    text-transform: uppercase;
-    text-align: center;
-    line-height: 1;
-    padding: 70px 28px; 
-    font-size: 50px; 
-    cursor: pointer; 
-    background-color : transparent;
-    outline: none;
-    border-radius: 100px;
-   }
-  .admin {
-    display: block; 
-    width: 250%; 
-    height: 200px;  
-    transition: all .5s ease;
-    color: #44ff00;
-    border: 3px solid rgb(255, 0, 0);
-    font-family:'Montserrat', sans-serif;
-    text-transform: uppercase;
-    line-height: 1;
-    padding: 70px 28px; 
-    font-size: 50px; 
-    cursor: pointer; 
-    background-color : transparent;
-    outline: none;
-    border-radius: 100px;
-    }
-a:hover {
-    color: #ff0000;
-    background-color: rgb(255, 230, 0)181;
-    text-decoration: none;
-}
-</style>
