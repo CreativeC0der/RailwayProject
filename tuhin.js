@@ -148,25 +148,17 @@ app.post('/book/overview', (req, res) => {
             origin: 'budge-budge',
             train_name: 'budge-budge local',
         },
-        ExtraData: {
+        extraData: {
             mealPreference: 'vegetarian',
-            seatPreference: ['upper', 'middle'],
-            age: '30',
-            // total fare should be calculated here 
-            //total_fare= seat_type * no_of_seat
-            total_fare : 'Rs : 4000 /-',
+            seatPreference: ['upper', 'middle']
         }
     })
 })
 
+//post=paymentmode,paymentstatus,bookid
+app.post('/book/payment', (req, res) => {
+
+})
 
 //this page should generate payment id and booking id for both success and failed condition
-app.get('/book/overview/payment/',(req, res) => {
-    res.render('payment',{
-        name:"shrijon",
-        acc_num: 4,
-        train_number: 12345,
-        total_fare : 4000
-    })})
-
 app.listen(3000, 'localhost');
