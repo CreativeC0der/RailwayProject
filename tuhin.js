@@ -162,6 +162,10 @@ app.post('/book/overview', (req, res) => {
 app.post('/book/payment', (req, res) => {
     //redirected to dashboard using same userData
 })
+// 
+// payment_id,acc_num,booking_id  is posting 
+app.post('/dasdboard/cancel', (req, res) => {
+    //redirected to dashboard using same userData  (need to do this)
+})
 
-//this page should generate payment id and booking id for both success and failed condition
 app.listen(3000, 'localhost');
