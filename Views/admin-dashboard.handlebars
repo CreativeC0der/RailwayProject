@@ -1,0 +1,248 @@
+{{>navbar}}
+<div class="container">
+    <div class="section">
+        <h2>Station Details</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Station Name</th>
+                    <th>Station Code</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each stations}}
+                <tr>
+                    <td>{{station_name}}</td>
+                    <td>{{station_code}}</td>
+                    <td>{{location}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <div style="padding-left: 80%" ;>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#stationModal" class="btn btn-info"> Add
+                station </button>
+            <!-- station -->
+
+            <div class="modal fade" id="stationModal" tabindex="-1" aria-labelledby="stationModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="stationModalLabel">Input Station details</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/admin-dashboard" method="POST">
+                                <div class="form-group">
+                                    <label for="station_name">Station Name:</label>
+                                    <input type="text" id="station_name" name="station_name" class="form-control"
+                                        required>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label for="station_code">Station Code:</label>
+                                    <input type="text" id="station_code" name="station_code" class="form-control"
+                                        required>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label for="location">Location:</label>
+                                    <input type="text" id="location" name="location" class="form-control" required>
+                                </div>
+                                <br>
+                                <div class="form-group" style="padding-left: 60%;">
+                                    <input type="submit" value="Submit" class="btn btn-outline-warning">
+                                    <button type="button" class="btn btn-outline-dark"
+                                        data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="section">
+            <h2>Train Details</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Train Number</th>
+                        <th>Train Name</th>
+                        <th>Origin</th>
+                        <th>Destination</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each trains}}
+                    <tr>
+                        <td>{{train_number}}</td>
+                        <td>{{train_name}}</td>
+                        <td>{{origin}}</td>
+                        <td>{{destination}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <div style="padding-left: 80%" ;>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#trainModal" class="btn btn-info"> Add
+                    Train </button>
+                <!-- train-->
+
+                <div class="modal fade" id="trainModal" tabindex="-1" aria-labelledby="trainModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="trainModalLabel">Input Train details</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/admin-dashboard" method="POST">
+                                    <div class="form-group">
+                                        <label for="destination">Destination:</label>
+                                        <input type="text" id="destination" name="destination" class="form-control"
+                                            required>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <label for="origin">Origin:</label>
+                                        <input type="text" id="origin" name="origin" class="form-control" required>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <label for="train_name">Train Name:</label>
+                                        <input type="text" id="train_name" name="train_name" class="form-control"
+                                            required>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <label for="train_number">Train Number:</label>
+                                        <input type="text" id="train_number" name="train_number" class="form-control"
+                                            required>
+                                    </div>
+                                    <br>
+                                    <div class="form-group" style="padding-left: 60%;">
+                                        <input type="submit" value="Submit" class="btn btn-outline-warning">
+                                        <button type="button" class="btn btn-outline-dark"
+                                            data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="section">
+                <h2>Seat Details</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Seat Type</th>
+                            <th>Available Seats</th>
+                            <th>Train Number</th>
+                            <th>Fare</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each seats}}
+                        <tr>
+                            <td>{{seat_type}}</td>
+                            <td>{{available_seats}}</td>
+                            <td>{{train_number}}</td>
+                            <td>{{fare}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                <div style="padding-left: 80%" ;>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#seatModal" class="btn btn-info"> Add
+                        Seat </button>
+                    <!-- seat-->
+
+                    <div class="modal fade" id="seatModal" tabindex="-1" aria-labelledby="seatModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="seatModalLabel">Input seat details</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/admin-dashboard" method="POST">
+                                        <div class="form-group">
+                                            <label for="fare">Fare:</label>
+                                            <input type="number" id="fare" name="fare" min="1" class="form-control"
+                                                required>
+                                        </div>
+                                        <br>
+                                        <div class="form-group">
+                                            <label for="available_seats">Available Seats:</label>
+                                            <input type="text" id="available_seats" name="available_seats"
+                                                class="form-control" required>
+                                        </div>
+                                        <br>
+                                        <div class="form-group">
+                                            <label for="seat_type">Seat Type:</label>
+                                            <input type="text" id="seat_type" name="seat_type" class="form-control"
+                                                required>
+                                        </div>
+                                        <br>
+                                        <div class="form-group">
+                                            <label for="train_number">Train Number:</label>
+                                            <input type="text" id="train_number" name="train_number"
+                                                class="form-control" required>
+                                        </div>
+                                        <br>
+                                        <div class="form-group" style="padding-left: 60%;">
+                                            <input type="submit" value="Submit" class="btn btn-outline-warning">
+                                            <button type="button" class="btn btn-outline-dark"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <style>
+                .container {
+                    max-width: 900px;
+                    margin: 50px auto;
+                    padding: 20px;
+                    background-color: #ffffff;
+                    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+                    border-radius: 5px;
+                }
+
+                h2 {
+                    margin-bottom: 20px;
+                }
+
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-bottom: 20px;
+                }
+
+                table th,
+                table td {
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                    text-align: left;
+                }
+
+                .section {
+                    margin-bottom: 40px;
+                }
+            </style>

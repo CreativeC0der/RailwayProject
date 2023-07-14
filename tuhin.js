@@ -85,7 +85,7 @@ app.get('/passenger-login', (req, res) => {
     res.render('login', {})
 })
 app.get('/admin-login', (req, res) => {
-    res.render('login', {})
+    res.render('admin-login', {})
 })
 
 //TEMPLATE
@@ -165,7 +165,22 @@ app.post('/book/payment', (req, res) => {
 // 
 // payment_id,acc_num,booking_id  is posting 
 app.post('/dashboard/cancel', (req, res) => {
-    //redirected to dashboard using same userData  (need to do this)
+    //redirected to dashboard using same userData  
 })
+
+//......................................................................admin section ................................................................
+//admin_dashboard
+ // this will be in post method
+
+app.get('/admin-dashboard', (req, res) => {
+    res.render('admin-dashboard', {
+        userData: {
+            name: 'Shrijon',
+            email: 'shrijon1234@gmail.com',
+            acc_num: 4,
+            phone: 2147483647,
+            address: 'behala',
+        }
+})})
 
 app.listen(3000, 'localhost');
