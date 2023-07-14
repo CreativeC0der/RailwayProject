@@ -172,6 +172,8 @@ app.post('/dashboard/cancel', (req, res) => {
 //admin_dashboard
 // this will be in post method
 //CHECK THIS!!!!! 
+
+//post=accnum,email
 app.post('/admin-dashboard', (req, res) => {
     res.render('admin-dashboard', {
         adminData: {
@@ -235,5 +237,7 @@ app.post('/admin-dashboard', (req, res) => {
 
     })
 })
+
+
 
 app.listen(3000, 'localhost');
