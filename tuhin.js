@@ -176,7 +176,7 @@ app.post('/dashboard/cancel', (req, res) => {
 //post=accnum,email
 app.post('/admin-dashboard', (req, res) => {
     res.render('admin-dashboard', {
-        adminData: {
+        userData: {
             name: 'Shrijon',
             email: 'shrijon1234@gmail.com',
             acc_num: 4,
@@ -237,7 +237,5 @@ app.post('/admin-dashboard', (req, res) => {
 
     })
 })
-
-
 
 app.listen(3000, 'localhost');
