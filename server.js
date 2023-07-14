@@ -63,6 +63,8 @@ app.get('/contact', contactRoute);
 
 app.post('/dashboard', dashboardRoute);
 
+app.post('/dashboard/cancel', dashboardRoute);
+
 app.get('/book', bookRoute);
 
 app.post('/book/overview', bookRoute);

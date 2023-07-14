@@ -53,4 +53,15 @@ app.post('/dashboard', (req, res) => {
 
 });
 
+app.post('/dashboard/cancel', (req, res) => {
+    console.log(req.body);
+    query = `delete from booking where booking_id=${req.body.booking_id}`;
+    connection.query(query, (err, result, fields) => {
+        if (err)
+            console.log(err);
+        console.log(result);
+    })
+    res.redirect(307, `/dashboard?accnum=${userData.acc_num}&email=${userData.email}`);
+})
+
 module.exports = app;

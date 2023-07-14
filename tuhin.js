@@ -164,7 +164,7 @@ app.post('/book/payment', (req, res) => {
 })
 // 
 // payment_id,acc_num,booking_id  is posting 
-app.post('/dasdboard/cancel', (req, res) => {
+app.post('/dashboard/cancel', (req, res) => {
     //redirected to dashboard using same userData  (need to do this)
 })
 
