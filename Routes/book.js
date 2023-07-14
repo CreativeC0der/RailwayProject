@@ -55,6 +55,8 @@ app.post('/book/overview', (req, res) => {
                 console.log(err);
             console.log(results);
             bookid = Math.floor(Math.random() * 10000);
+            console.log('USERDATA BEFORE BOOKING_------------------------');
+            console.log(userData);
             query = `insert into booking values(
                 ${bookid},
                 ${seat.train_number},
@@ -108,9 +110,7 @@ app.post('/book/payment', (req, res) => {
         if (err)
             console.log(err);
         console.log(results);
-        req.body.acc_num = userData.acc_num;
-        req.body.email = userData.email;
-        res.redirect(307, '/dashboard?accnum=4&email=shirjon0133@gmail.com');
+        res.redirect(307, `/dashboard?accnum=${userData.acc_num}&email=${userData.email}`);
     })
 })
 module.exports = app;
