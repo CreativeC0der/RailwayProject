@@ -170,17 +170,70 @@ app.post('/dashboard/cancel', (req, res) => {
 
 //......................................................................admin section ................................................................
 //admin_dashboard
- // this will be in post method
-
-app.get('/admin-dashboard', (req, res) => {
+// this will be in post method
+//CHECK THIS!!!!! 
+app.post('/admin-dashboard', (req, res) => {
     res.render('admin-dashboard', {
-        userData: {
+        adminData: {
             name: 'Shrijon',
             email: 'shrijon1234@gmail.com',
             acc_num: 4,
             phone: 2147483647,
             address: 'behala',
-        }
-})})
+        },
+        trains: [
+            {
+                destination: 'sealdah',
+                origin: 'budge-budge',
+                train_name: 'budge-budge local',
+                train_number: 12345
+            },
+            {
+                destination: 'sealdah',
+                origin: 'canning',
+                train_name: 'canning local',
+                train_number: 23456
+            },
+            {
+                destination: 'sonapur',
+                origin: 'sealdah',
+                train_name: 'sonarpur local',
+                train_number: 78901
+            }
+        ],
+        stations: [
+            {
+                location: 'sealdah',
+                station_code: 'SDH',
+                station_name: 'Sealdah Junction'
+            },
+            {
+                location: 'canning',
+                station_code: 'CNG',
+                station_name: 'Canning'
+            },
+            {
+                location: 'piali',
+                station_code: 'PLF',
+                station_name: 'Pilai'
+            }
+        ],
+        seats: [
+            {
+                fare: 100,
+                available_seats: 2,
+                train_number: 12345,
+                seat_type: '1A'
+            },
+            {
+                fare: 100,
+                available_seats: 2,
+                train_number: 12345,
+                seat_type: '1A'
+            }
+        ]
+
+    })
+})
 
 app.listen(3000, 'localhost');

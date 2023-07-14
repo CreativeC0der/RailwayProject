@@ -8,6 +8,7 @@ const aboutRoute = require('./Routes/about');
 const contactRoute = require('./Routes/contact');
 const dashboardRoute = require('./Routes/dashboard');
 const bookRoute = require('./Routes/book');
+const adminRoute = require('./Routes/admin-dashboard');
 
 const app = express();
 
@@ -50,7 +51,7 @@ app.get('/passenger-login', (req, res) => {
 })
 
 app.get('/admin-login', (req, res) => {
-    res.render('login', {})
+    res.render('admin-login', {})
 })
 
 app.get('/signup', (req, res) => {
@@ -70,3 +71,6 @@ app.get('/book', bookRoute);
 app.post('/book/overview', bookRoute);
 
 app.post('/book/payment', bookRoute);
+
+
+app.post('/admin-dashboard', adminRoute);
