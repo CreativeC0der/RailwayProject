@@ -26,7 +26,8 @@
       <td>{{payment_status}}</td>
       <td>
         <!-- modal button cancel -->
-        <button type="button" onclick="info({{booking_id}},{{payment_id}})" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#cancelModal" >
+        <button type="button" onclick="info({{booking_id}},{{payment_id}})" class="btn btn-danger"
+          data-bs-toggle="modal" data-bs-target="#cancelModal">
           Cancel Booking
         </button>
       </td>
@@ -164,9 +165,9 @@
     }
 
     function info(var booking_id,var payment_id)
-    {
-      document.getElementById("modal_payment_id").value=payment_id;
-      document.getElementById("modal_booking_id").value=booking_id;
+      {
+        document.getElementById("modal_payment_id").value = payment_id;
+    document.getElementById("modal_booking_id").value = booking_id;
     }
 
 
