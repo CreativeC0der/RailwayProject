@@ -19,7 +19,7 @@
                     <td>{{location}}</td>
                     <td style="padding-left:5%;">
                         <!-- modal button delete -->
-                        <button type="button" onclick="stationinfo({{station_code}})" class="btn btn-danger"
+                        <button type="button" onclick="stationinfo('{{station_code}}')" class="btn btn-danger"
                             data-bs-toggle="modal" data-bs-target="#stationdeleteModal">
                             Delete Station
                         </button>
@@ -119,7 +119,7 @@
                         <td>{{destination}}</td>
                         <td style="padding-left: 3%;">
                             <!-- modal button delete -->
-                            <button type="button" onclick="traininfo({{train_number}},{{train_name}})"
+                            <button type="button" onclick="traininfo('{{train_number}}','{{train_name}}')"
                                 class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#traindeleteModal">
                                 Delete Train
                             </button>
@@ -228,7 +228,7 @@
                             <td>{{fare}}</td>
                             <td style="padding-left:5%;">
                                 <!-- modal button delete -->
-                                <button type="button" onclick="seatinfo({{train_number}},{{seat_type}})" 
+                                <button type="button" onclick="seatinfo('{{train_number}}','{{seat_type}}')" 
                                     class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#seatdeleteModal">
                                     Delete Seat
                                 </button>
@@ -349,16 +349,22 @@
                 }
             </style>
 
-            <script>
-                function stationinfo(station_code) {
-                    document.getElementById("modal_delete_station_code").value = station_code;
-                }
-                function traininfo(train_number, train_name) {
-                    document.getElementById("modal_delete_train_number").value = train_number;
-                    document.getElementById("modal_delete_train_name").value = train_name;
-                }
-                function seatinfo(train_number, seat_type) {
-                    document.getElementById("modal_delete_seat_train_number").value = train_number;
-                    document.getElementById("modal_delete_seat_type").value = seat_type;
-                }
-            </script>
+<script>
+
+    function stationinfo(station_code) {
+        console.log(station_code);
+        document.getElementById("modal_delete_station_code").value = station_code;
+    }
+    function traininfo(train_number, train_name) {
+        console.log(train_name);
+        console.log(train_number);
+        document.getElementById("modal_delete_train_number").value = train_number;
+        document.getElementById("modal_delete_train_name").value = train_name;
+    }
+    function seatinfo(train_number, seat_type) {
+        console.log(train_number);
+        console.log(seat_type);
+        document.getElementById("modal_delete_seat_train_number").value = train_number;
+        document.getElementById("modal_delete_seat_type").value = seat_type;
+    }
+</script>
