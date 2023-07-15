@@ -172,8 +172,8 @@ app.post('/dashboard/cancel', (req, res) => {
 //admin_dashboard
 // this will be in post method
 //post=accnum,email
-//query==> status=200
-app.post('/admin-dashboard?status=200', (req, res) => {
+
+app.post('/admin-dashboard?alert=Welcome-admin', (req, res) => {
     res.render('admin-dashboard', {
         userData: {
             name: 'Shrijon',
@@ -232,19 +232,19 @@ app.post('/admin-dashboard?status=200', (req, res) => {
                 train_number: 12345,
                 seat_type: '1A'
             }
-        ]
-
+        ],
+        alert: 'Station added'//SWEET ALERT
     })
 })
 //post data from admin dashboard:
 app.post('/admin-dashboard/add-station', (req, res) => {
-    //redirected to dashboard with status=210
+    //redirected to dashboard 
 })
 app.post('/admin-dashboard/add-train', (req, res) => {
-    //redirected to dashboard status=211
+    //redirected to dashboard 
 })
 app.post('/admin-dashboard/add-seat', (req, res) => {
-    //redirected to dashboard status=212
+    //redirected to dashboard 
 })
 
 
