@@ -17,9 +17,8 @@
             <td>{{origin}}</td>
             <td>{{destination}}</td>
             <td>
-                <button type="button" class="book-button" data-bs-toggle="modal" data-bs-target="#trainModal"
-                    onclick="GetNumber({{train_number}})">Book
-                    Seat</button>
+                <i class="fa-solid fa-couch fa-beat" style="color: #261796;" class="book-button" data-bs-toggle="modal" data-bs-target="#trainModal"
+                    onclick="GetNumber({{train_number}})"> <font style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Book Seat Now</font></i>
             </td>
         </tr>
         {{/each}}
@@ -30,23 +29,25 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h1 class="modal-title fs-5" id="trainModalLabel">Details Information </h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="/book/overview" method="post">
                     <div>
-                        <h1 class="modal-title fs-5" id="trainModalLabel">You are booking Seat for <span
-                                id="modaltrain"></span> train</h1>
+                        <h1 class="modal-title fs-5" id="trainModalLabel"> You are booking Seat for <span
+                                id="modaltrain"></span> train </h1>
                         <input type="hidden" id="trainNumber" name="trainNumber" value="">
+                        <br>
                         <label for="numSeats">Number of Seats:</label>
                         <input type="number" id="numSeats" name="numSeats" min="1" max="10" required />
                     </div>
-
+                    <br>
                     <div>
                         <label for="journeyDate">Journey Date:</label>
                         <input type="date" id="journeyDate" name="journeyDate" required />
                     </div>
-
+                    <br>
                     <div>
                         <label for="seatType">Seat Type:</label>
                         <select id="seatType" name="seatType" required>
@@ -56,29 +57,27 @@
                             <option value="SL">SL</option>
                         </select>
                     </div>
-
+                    <br>
                     <div>
                         <label>Seat Preference : </label>
-                        <label for="upperSeat"> Upper
-                            <input type="checkbox" id="upperSeat" name="seatPreference" value="upper"> </label>
-                        <label for="middleSeat"> Middle
-                            <input type="checkbox" id="middleSeat" name="seatPreference" value="middle"> </label>
-                        <label for="lowerSeat"> Lower
-                            <input type="checkbox" id="lowerSeat" name="seatPreference" value="lower"> </label>
+                        Upper <input type="checkbox" id="upperSeat" name="seatPreference" value="upper">
+                        Middle <input type="checkbox" id="middleSeat" name="seatPreference" value="middle"> Lower
+                        <input type="checkbox" id="lowerSeat" name="seatPreference" value="lower"> </label>
                     </div>
-
+                    <br>
                     <div>
                         <label for="mealPreference"> Meal Preference:</label>
-                        <label for="vegetarian">Vegetarian
-                            <input type="radio" id="vegetarian" name="mealPreference" value="vegetarian" required />
-                        </label>
-                        <label for="nonVegetarian">Non-Vegetarian
-                            <input type="radio" id="nonVegetarian" name="mealPreference" value="nonVegetarian"
-                                required /> </label>
-                        <label for="noMeal">No Meal
-                            <input type="radio" id="noMeal" name="mealPreference" value="noMeal" required /> </label>
+                        Vegetarian
+                        <input type="radio" id="vegetarian" name="mealPreference" value="vegetarian" required />
+                        Non-Vegetarian
+                        <input type="radio" id="nonVegetarian" name="mealPreference" value="nonVegetarian" required />
+                        No Meal
+                        <input type="radio" id="noMeal" name="mealPreference" value="noMeal" required /> </label>
                     </div>
-                    <input type="submit" value="Book Now" />
+                    <br>
+                    <p style="padding-left:75%;">
+                        <input type="submit" value="Book Now" />
+                    </p>
                 </form>
 
             </div>
@@ -122,15 +121,6 @@
         margin-right: 10px;
     }
 
-    form {
-        width: 300px;
-        margin: 0 auto;
-    }
-
-    div {
-        margin-bottom: 10px;
-    }
-
     label {
         display: block;
         font-weight: bold;
@@ -170,7 +160,7 @@
 
         document.getElementById("modaltrain").textContent = trainNumber;
         document.getElementById("trainNumber").value = trainNumber;
-        var x=document.getElementById("trainNumber").value;
+        var x = document.getElementById("trainNumber").value;
         console.log(x);
     }
 </script>

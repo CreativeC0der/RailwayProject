@@ -17,12 +17,10 @@
                     <td>{{station_name}}</td>
                     <td>{{station_code}}</td>
                     <td>{{location}}</td>
-                    <td style="padding-left:5%;">
+                    <td style="padding-left:6%;">
                         <!-- modal button delete -->
-                        <button type="button" onclick="stationinfo('{{station_code}}')" class="btn btn-danger"
-                            data-bs-toggle="modal" data-bs-target="#stationdeleteModal">
-                            Delete Station
-                        </button>
+                        <i class="fa-solid fa-trash-can" onclick="stationinfo('{{station_code}}')" class="btn btn-danger"
+                            data-bs-toggle="modal" data-bs-target="#stationdeleteModal" > </i>
                         <!--delete modal-->
                         <div class="modal fade" id="stationdeleteModal" tabindex="-1"
                             aria-labelledby="stationdeleteModalLabel" aria-hidden="true">
@@ -53,8 +51,8 @@
                 {{/each}}
             </tbody>
         </table>
-        <div style="padding-left: 81.7%" ;>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#stationModal" class="btn btn-info"> Add
+        <div style="padding-left: 86%" ;>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#stationModal" class="btn btn-outline-primary"> Add
                 station </button>
             <!-- station -->
 
@@ -117,12 +115,10 @@
                         <td>{{train_name}}</td>
                         <td>{{origin}}</td>
                         <td>{{destination}}</td>
-                        <td style="padding-left: 3%;">
+                        <td style="padding-left: 5%;">
                             <!-- modal button delete -->
-                            <button type="button" onclick="traininfo('{{train_number}}','{{train_name}}')"
-                                class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#traindeleteModal">
-                                Delete Train
-                            </button>
+                            <i class="fa-solid fa-trash-can" onclick="traininfo('{{train_number}}','{{train_name}}')"
+                                class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#traindeleteModal"> </i>
                             <!--delete modal-->
                             <div class="modal fade" id="traindeleteModal" tabindex="-1"
                                 aria-labelledby="traindeleteModalLabel" aria-hidden="true">
@@ -155,8 +151,8 @@
                     {{/each}}
                 </tbody>
             </table>
-            <div style="padding-left: 85%" ;>
-                <button type="button" data-bs-toggle="modal" data-bs-target="#trainModal" class="btn btn-info"> Add
+            <div style="padding-left: 88%" ;>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#trainModal" class="btn btn-outline-primary "> Add
                     Train </button>
                 <!-- train-->
 
@@ -226,12 +222,10 @@
                             <td>{{available_seats}}</td>
                             <td>{{train_number}}</td>
                             <td>{{fare}}</td>
-                            <td style="padding-left:5%;">
+                            <td style="padding-left:6%;">
                                 <!-- modal button delete -->
-                                <button type="button" onclick="seatinfo('{{train_number}}','{{seat_type}}')" 
-                                    class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#seatdeleteModal">
-                                    Delete Seat
-                                </button>
+                                <i class="fa-solid fa-trash-can" onclick="seatinfo('{{train_number}}','{{seat_type}}')" 
+                                    class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#seatdeleteModal"> </i>
                                 <!--delete modal-->
                                 <div class="modal fade" id="seatdeleteModal" tabindex="-1"
                                     aria-labelledby="seatdeleteModalLabel" aria-hidden="true">
@@ -264,8 +258,8 @@
                         {{/each}}
                     </tbody>
                 </table>
-                <div style="padding-left: 84%" ;>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#seatModal" class="btn btn-info"> Add
+                <div style="padding-left: 87%" ;>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#seatModal" class="btn btn-outline-primary"> Add
                         Seat </button>
                     <!-- seat-->
 
@@ -320,11 +314,9 @@
             <style>
                 .container {
                     max-width: 900px;
-                    margin: 50px auto;
-                    padding: 20px;
                     background-color: #ffffff;
-                    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-                    border-radius: 5px;
+                    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.167);
+                    border-radius: 10px;
                 }
 
                 h2 {
