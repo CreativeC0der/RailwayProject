@@ -23,34 +23,36 @@ app.post('/admin-dashboard', (req, res) => {
 
             else {
                 res.send('Wrong credentials');
-                reject();
+                reject('Wrong details');
             }
         }
         else
             resolve('admin data found in DB');
     })
 
-    p1.then((msg) => {
-        console.log(msg);
-        responseData = { userData: adminData };
-        query = `select * from station`;
-        connection.query(query, (err, allstations, fields) => {
-            responseData.stations = allstations;
-            query = `select * from train`;
-            connection.query(query, (err, alltrains, fields) => {
-                responseData.trains = alltrains;
-                query = `select * from seat_inventory`;
-                connection.query(query, (err, allseats, fields) => {
-                    responseData.seats = allseats
-                    res.status(req.query.status).render('admin-dashboard', responseData);
+    p1
+        .then((msg) => {
+            console.log(msg);
+            responseData = { userData: adminData };
+            query = `select * from station`;
+            connection.query(query, (err, allstations, fields) => {
+                responseData.stations = allstations;
+                query = `select * from train`;
+                connection.query(query, (err, alltrains, fields) => {
+                    responseData.trains = alltrains;
+                    query = `select * from seat_inventory`;
+                    connection.query(query, (err, allseats, fields) => {
+                        responseData.seats = allseats
+                        responseData.alert = req.query.alert;
+                        res.render('admin-dashboard', responseData);
+                    })
                 })
-            })
-        });
-    });
-    p1.catch((msg) => {
-        console.log(msg);
-        return;
-    })
+            });
+        })
+        .catch((msg) => {
+            console.log(msg);
+            return;
+        })
 
 });
 
@@ -64,7 +66,7 @@ app.post('/admin-dashboard/add-station', (req, res) => {
     connection.query(query, (err, results, fields) => {
         if (err)
             console.log(err);
-        res.redirect(307, '/admin-dashboard?status=210');
+        res.redirect(307, '/admin-dashboard?alert=Station+added');
     })
 })
 
@@ -79,7 +81,7 @@ app.post('/admin-dashboard/add-train', (req, res) => {
     connection.query(query, (err, results, fields) => {
         if (err)
             console.log(err);
-        res.redirect(307, '/admin-dashboard?status=211');
+        res.redirect(307, '/admin-dashboard?alert=Train+added');
     })
 })
 
@@ -94,9 +96,29 @@ app.post('/admin-dashboard/add-seat', (req, res) => {
     connection.query(query, (err, results, fields) => {
         if (err)
             console.log(err);
-        res.redirect(307, '/admin-dashboard?status=212');
+        res.redirect(307, '/admin-dashboard?alert=Seat+added');
     })
 })
+
+app.post('/admin-dashboard/delete-station', (req, res) => {
+    console.log(req.body);
+    query = `delete from station where station_code="${req.body.station_code}"`;
+    connection.query(query, (err, results, fields) => {
+        if (err)
+            console.log(err);
+        res.redirect(307, '/admin-dashboard?alert=station+deleted');
+    })
+});
+
+app.post('/admin-dashboard/delete-train', (req, res) => {
+    console.log(req.body);
+    query = `delete from station where `
+});
+
+app.post('/admin-dashboard/delete-seat', (req, res) => {
+    console.log(req.body);
+    query = `delete from station where`
+});
 
 
 module.exports = app
