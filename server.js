@@ -74,3 +74,7 @@ app.post('/book/payment', bookRoute);
 
 
 app.post('/admin-dashboard', adminRoute);
+
+app.post('/admin-dashboard/add-station', adminRoute);
+app.post('/admin-dashboard/add-train', adminRoute);
+app.post('/admin-dashboard/add-seat', adminRoute);

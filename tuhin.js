@@ -171,8 +171,9 @@ app.post('/dashboard/cancel', (req, res) => {
 //......................................................................admin section ................................................................
 //admin_dashboard
 // this will be in post method
-
-app.post('/admin-dashboard', (req, res) => {
+//post=accnum,email
+//query==> status=200
+app.post('/admin-dashboard?status=200', (req, res) => {
     res.render('admin-dashboard', {
         userData: {
             name: 'Shrijon',
@@ -237,13 +238,13 @@ app.post('/admin-dashboard', (req, res) => {
 })
 //post data from admin dashboard:
 app.post('/admin-dashboard/add-station', (req, res) => {
-    //redirected to dashboard 
+    //redirected to dashboard with status=210
 })
 app.post('/admin-dashboard/add-train', (req, res) => {
-    //redirected to dashboard 
+    //redirected to dashboard status=211
 })
 app.post('/admin-dashboard/add-seat', (req, res) => {
-    //redirected to dashboard 
+    //redirected to dashboard status=212
 })
 
 
