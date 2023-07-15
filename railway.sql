@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2023 at 07:58 PM
+-- Generation Time: Jul 15, 2023 at 09:07 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -37,14 +37,6 @@ CREATE TABLE `booking` (
   `no_of_seats` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `booking`
---
-
-INSERT INTO `booking` (`booking_id`, `train_number`, `journey_date`, `fare`, `acc_num`, `seat_type`, `no_of_seats`) VALUES
-(881, 6969, '2023-07-13', 1600, 4, '3A', 2),
-(6316, 6969, '2023-07-14', 1000, 4, 'SL', 2);
-
 -- --------------------------------------------------------
 
 --
@@ -77,6 +69,7 @@ CREATE TABLE `passenger` (
 --
 
 INSERT INTO `passenger` (`name`, `acc_num`, `email`, `phone`, `address`) VALUES
+('admin', 0, 'admin@gmail.com', 12345678, 'admin r bari'),
 ('sumon', 3, '011sumon@gmail.com', 2147483647, 'bokkhali'),
 ('shrijon', 4, 'shirjon0133@gmail.com', 2147483647, 'behala'),
 ('tuhin', 5, 'tuhin301201@gmail.com', 2147483647, 'canning');
@@ -94,14 +87,6 @@ CREATE TABLE `payment` (
   `payment_status` varchar(10) DEFAULT NULL,
   `booking_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `payment`
---
-
-INSERT INTO `payment` (`payment_mode`, `payment_id`, `amount`, `payment_status`, `booking_id`) VALUES
-('upi', 4871, 0, 'success', 6316),
-('card', 5719, 0, 'success', 881);
 
 -- --------------------------------------------------------
 
@@ -121,10 +106,14 @@ CREATE TABLE `seat_inventory` (
 --
 
 INSERT INTO `seat_inventory` (`fare`, `available_seats`, `seat_type`, `train_number`) VALUES
-(800, 48, '3A', 6969),
-(500, 98, 'SL', 6969),
-(2000, 0, '1A', 12345),
-(1500, 85, '2A', 12345);
+(800, 43, '3A', 6969),
+(500, 96, 'SL', 6969),
+(200, 100, 'ECONOMY', 11111),
+(2000, 93, '1A', 12345),
+(1500, 75, '2A', 12345),
+(3, 100, 'BLABLA', 12345),
+(9000, 5, 'Elite', 13456),
+(3, 100, 'ECONOMY', 22222);
 
 -- --------------------------------------------------------
 
@@ -143,8 +132,13 @@ CREATE TABLE `station` (
 --
 
 INSERT INTO `station` (`station_code`, `station_name`, `location`) VALUES
+('A', 'A', 'A'),
+('B', 'B', 'B'),
 ('BGB', 'Budge Budge', 'Budge Budge Junction'),
+('BLY', 'Ballygunge', 'Ballygunge Junction'),
+('C', 'C', 'C'),
 ('CANG', 'Canning', 'Canning District'),
+('D', 'D', 'D'),
 ('SDH', 'Sealdah', 'Sealdah Junction');
 
 -- --------------------------------------------------------
@@ -167,7 +161,11 @@ CREATE TABLE `train` (
 INSERT INTO `train` (`destination`, `origin`, `train_name`, `train_number`) VALUES
 ('CANG', 'SDH', 'canning local', 6969),
 ('SDH', 'CANG', 'canning-local-2', 7979),
-('SDH', 'BGB', 'budge-budge local', 12345);
+('B', 'A', 'A-B', 11111),
+('SDH', 'BGB', 'budge-budge local', 12345),
+('SDH', 'BLY', 'Ballygunge-Sealdah Local', 13456),
+('A', 'B', 'B-A', 22222),
+('D', 'C', 'C-D', 333333);
 
 --
 -- Indexes for dumped tables
@@ -243,7 +241,7 @@ ALTER TABLE `cancellation`
 -- Constraints for table `payment`
 --
 ALTER TABLE `payment`
-  ADD CONSTRAINT `fk_payment` FOREIGN KEY (`booking_id`) REFERENCES `booking` (`booking_id`);
+  ADD CONSTRAINT `fk_payment` FOREIGN KEY (`booking_id`) REFERENCES `booking` (`booking_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `seat_inventory`
