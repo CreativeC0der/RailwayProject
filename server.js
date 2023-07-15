@@ -78,3 +78,12 @@ app.post('/admin-dashboard', adminRoute);
 app.post('/admin-dashboard/add-station', adminRoute);
 app.post('/admin-dashboard/add-train', adminRoute);
 app.post('/admin-dashboard/add-seat', adminRoute);
+
+//need to implemnet @shrijon
+
+ //posting station_code
+app.post('/admin-dashboard/delete-station', adminRoute);
+//posting train_number, train_name
+app.post('/admin-dashboard/delete-train', adminRoute);
+//posting train_number, seat_type
+app.post('/admin-dashboard/delete-seat', adminRoute);

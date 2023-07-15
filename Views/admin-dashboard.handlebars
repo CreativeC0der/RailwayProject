@@ -8,7 +8,8 @@
                     <th>Station Name</th>
                     <th>Station Code</th>
                     <th>Location</th>
-                </tr> 
+                    <th>Action</th>
+                </tr>
             </thead>
             <tbody>
                 {{#each stations}}
@@ -16,6 +17,38 @@
                     <td>{{station_name}}</td>
                     <td>{{station_code}}</td>
                     <td>{{location}}</td>
+                    <td>
+                        <!-- modal button delete -->
+                        <button type="button" onclick="stationinfo({{station_code}})" class="btn btn-danger"
+                            data-bs-toggle="modal" data-bs-target="#stationdeleteModal">
+                            Delete Station
+                        </button>
+                        <!--delete modal-->
+                        <div class="modal fade" id="stationdeleteModal" tabindex="-1"
+                            aria-labelledby="stationdeleteModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="stationdeleteModalLabel">Delete Station
+                                            Confirmation
+                                        </h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/admin-dashboard/delete-station" method="POST">
+                                            <input type="hidden" id="modal_delete_station_code" name="station_code"
+                                                value="">
+                                            <p><strong>Are you sure you want to delete this record?</strong> </p>
+                                            <input type="submit" value="Yes" class="btn btn-outline-warning">
+                                            <button type="button" class="btn btn-outline-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
                 {{/each}}
             </tbody>
@@ -74,6 +107,7 @@
                         <th>Train Name</th>
                         <th>Origin</th>
                         <th>Destination</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -83,6 +117,40 @@
                         <td>{{train_name}}</td>
                         <td>{{origin}}</td>
                         <td>{{destination}}</td>
+                        <td>
+                            <!-- modal button delete -->
+                            <button type="button" onclick="traininfo({{train_number}},{{train_name}})"
+                                class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#traindeleteModal">
+                                Delete Train
+                            </button>
+                            <!--delete modal-->
+                            <div class="modal fade" id="traindeleteModal" tabindex="-1"
+                                aria-labelledby="traindeleteModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="traindeleteModalLabel">Delete Train
+                                                Confirmation
+                                            </h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="/admin-dashboard/delete-train" method="POST">
+                                                <input type="hidden" id="modal_delete_train_number" name="train_number"
+                                                    value="">
+                                                <input type="hidden" id="modal_delete_train_name" name="train_name"
+                                                    value="">
+                                                <p><strong>Are you sure you want to delete this record?</strong> </p>
+                                                <input type="submit" value="Yes" class="btn btn-outline-warning">
+                                                <button type="button" class="btn btn-outline-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                     {{/each}}
                 </tbody>
@@ -148,6 +216,7 @@
                             <th>Available Seats</th>
                             <th>Train Number</th>
                             <th>Fare</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -157,6 +226,40 @@
                             <td>{{available_seats}}</td>
                             <td>{{train_number}}</td>
                             <td>{{fare}}</td>
+                            <td>
+                                <!-- modal button delete -->
+                                <button type="button" onclick="seatinfo({{train_number}},{{seat_type}})"
+                                    class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#seatdeleteModal">
+                                    Delete Seat
+                                </button>
+                                <!--delete modal-->
+                                <div class="modal fade" id="seatdeleteModal" tabindex="-1"
+                                    aria-labelledby="seatdeleteModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="seatdeleteModalLabel">Seat Delete
+                                                    Confirmation</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="/admin-dashboard/delete-seat" method="POST">
+                                                    <input type="hidden" id="modal_delete_seat_train_number"
+                                                        name="train_number" value="">
+                                                    <input type="hidden" id="modal_delete_seat_type" name="seat_type"
+                                                        value="">
+                                                    <p><strong>Are you sure you want to delete this record?</strong>
+                                                    </p>
+                                                    <input type="submit" value="Yes" class="btn btn-outline-warning">
+                                                    <button type="button" class="btn btn-outline-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                         {{/each}}
                     </tbody>
@@ -210,7 +313,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -246,3 +348,17 @@
                     margin-bottom: 40px;
                 }
             </style>
+
+            <script>
+                function stationinfo(station_code) {
+                    document.getElementById("modal_delete_station_code").value = station_code;
+                }
+                function traininfo(train_number, train_name) {
+                    document.getElementById("modal_delete_train_number").value = train_number;
+                    document.getElementById("modal_delete_train_name").value = train_name;
+                }
+                function seatinfo(train_number, seat_type) {
+                    document.getElementById("modal_delete_seat_train_number").value = train_number;
+                    document.getElementById("modal_delete_seat_type").value = seat_type;
+                }
+            </script>
