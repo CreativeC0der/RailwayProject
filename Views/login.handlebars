@@ -1,22 +1,72 @@
-<div class="container">
-  <div class="row">
-    <div class="col-6">
-      <p class="h1">login</p>
-      <form action="dashboard" method="post">
-        <div class="form-group">
-          <label for="accountNumber">Account Number:</label>
-          <input type="text" class="form-control" id="accno" placeholder="Enter account number" name="accnum">
+ <div class="row" >
+        <div class="login-form">
+          <h1 class="login-heading">Login</h1>
+          <form action="dashboard" method="post">
+            <div class="form-group">
+              <label for="accountNumber">Account Number:</label>
+              <input type="text" class="form-control" id="accno" placeholder="Enter account number" name="accnum">
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+            </div>
+            <br>
+            <input type="submit" class="btn btn-success" value="Login">
+            <p class="signup-text">Don't have an account? <a href="/signup">Click here</a></p>
+          </form>
         </div>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-        </div>
-        <br>
-        <input type="submit" class="btn btn-success">
-        <p> Don't have account <a href="/signup"> click here</a></p>
-      </form>
     </div>
+  <style>
+    .container {
+  margin-top: 100px;
+}
 
+.login-form {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 5px;
+}
 
-  </div>
-</div>
+.login-heading {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #28a745;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #218838;
+}
+
+.signup-text {
+  margin-top: 15px;
+  font-size: 14px;
+}
+.row
+{
+
+  padding-left: 25%;
+  padding-right: 25%;
+  padding-top: 2%;
+}
+  </style>

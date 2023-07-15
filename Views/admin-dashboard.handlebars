@@ -17,7 +17,7 @@
                     <td>{{station_name}}</td>
                     <td>{{station_code}}</td>
                     <td>{{location}}</td>
-                    <td>
+                    <td style="padding-left:5%;">
                         <!-- modal button delete -->
                         <button type="button" onclick="stationinfo({{station_code}})" class="btn btn-danger"
                             data-bs-toggle="modal" data-bs-target="#stationdeleteModal">
@@ -53,7 +53,7 @@
                 {{/each}}
             </tbody>
         </table>
-        <div style="padding-left: 80%" ;>
+        <div style="padding-left: 81.7%" ;>
             <button type="button" data-bs-toggle="modal" data-bs-target="#stationModal" class="btn btn-info"> Add
                 station </button>
             <!-- station -->
@@ -117,7 +117,7 @@
                         <td>{{train_name}}</td>
                         <td>{{origin}}</td>
                         <td>{{destination}}</td>
-                        <td>
+                        <td style="padding-left: 3%;">
                             <!-- modal button delete -->
                             <button type="button" onclick="traininfo({{train_number}},{{train_name}})"
                                 class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#traindeleteModal">
@@ -155,7 +155,7 @@
                     {{/each}}
                 </tbody>
             </table>
-            <div style="padding-left: 80%" ;>
+            <div style="padding-left: 85%" ;>
                 <button type="button" data-bs-toggle="modal" data-bs-target="#trainModal" class="btn btn-info"> Add
                     Train </button>
                 <!-- train-->
@@ -226,9 +226,9 @@
                             <td>{{available_seats}}</td>
                             <td>{{train_number}}</td>
                             <td>{{fare}}</td>
-                            <td>
+                            <td style="padding-left:5%;">
                                 <!-- modal button delete -->
-                                <button type="button" onclick="seatinfo({{train_number}},{{seat_type}})"
+                                <button type="button" onclick="seatinfo({{train_number}},{{seat_type}})" 
                                     class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#seatdeleteModal">
                                     Delete Seat
                                 </button>
@@ -264,7 +264,7 @@
                         {{/each}}
                     </tbody>
                 </table>
-                <div style="padding-left: 80%" ;>
+                <div style="padding-left: 84%" ;>
                     <button type="button" data-bs-toggle="modal" data-bs-target="#seatModal" class="btn btn-info"> Add
                         Seat </button>
                     <!-- seat-->
