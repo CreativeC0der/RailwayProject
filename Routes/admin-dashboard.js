@@ -112,12 +112,31 @@ app.post('/admin-dashboard/delete-station', (req, res) => {
 
 app.post('/admin-dashboard/delete-train', (req, res) => {
     console.log(req.body);
-    query = `delete from station where `
+    query = `delete from train where train_number=${req.body.train_number}`;
+    connection.query(query, (err, results, fields) => {
+        if (err)
+            console.log(err);
+        res.redirect(307, '/admin-dashboard?alert=train+deleted');
+    })
 });
 
 app.post('/admin-dashboard/delete-seat', (req, res) => {
     console.log(req.body);
-    query = `delete from station where`
+    query = `delete from seat_inventory where train_number=${req.body.train_number} AND seat_type="${req.body.seat_type}"`
+
+    connection.query(query, (err, results, fields) => {
+        if (err)
+            console.log(err);
+
+        query = `delete from booking where train_number=${req.body.train_number} AND seat_type="${req.body.seat_type}";`
+
+        connection.query(query, (err, results, fields) => {
+            if (err)
+                console.log(err);
+            res.redirect(307, '/admin-dashboard?alert=seat+deleted');
+        })
+
+    })
 });
 
 
