@@ -42,7 +42,7 @@
 
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button"  class="book-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
   New Booking
 </button>
 
@@ -54,7 +54,7 @@
         <h1 class="modal-title fs-5" id="exampleModalLabel">Choose Your Origin and Destination</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="padding: 35px">
         <form>
           Booking will happens for this account number : <input type="text" id="myText" value="{{userData.acc_num}}" style="width:50px"
             disabled>
@@ -111,6 +111,18 @@
 
 
   <style>
+    .book-button
+    {
+      border-radius: 5px;
+      width: 150px;
+      height: 40px;
+      background-color: #7952B3;
+      color: white;
+    }
+    .book-button:hover
+    {
+      background-color: #573b81;
+    }
     table {
       border-collapse: collapse;
       width: 100%;

@@ -17,8 +17,8 @@
             <td>{{origin}}</td>
             <td>{{destination}}</td>
             <td>
-                <i class="fa-solid fa-couch fa-beat" style="color: #261796;" class="book-button" data-bs-toggle="modal" data-bs-target="#trainModal"
-                    onclick="GetNumber({{train_number}})"> <font style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Book Seat Now</font></i>
+                <i class="fa-solid fa-couch fa-beat" style="color: #7952B3;" class="book-button" data-bs-toggle="modal" data-bs-target="#trainModal"
+                    onclick="GetNumber({{train_number}})"> <font style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Book Now</font></i>
             </td>
         </tr>
         {{/each}}
@@ -32,7 +32,7 @@
                 <h1 class="modal-title fs-5" id="trainModalLabel">Details Information </h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="padding: 35px">
                 <form action="/book/overview" method="post">
                     <div>
                         <h1 class="modal-title fs-5" id="trainModalLabel"> You are booking Seat for <span
@@ -59,20 +59,19 @@
                     </div>
                     <br>
                     <div>
-                        <label>Seat Preference : </label>
-                        Upper <input type="checkbox" id="upperSeat" name="seatPreference" value="upper">
-                        Middle <input type="checkbox" id="middleSeat" name="seatPreference" value="middle"> Lower
-                        <input type="checkbox" id="lowerSeat" name="seatPreference" value="lower"> </label>
+                        <label> Seat Preference : </label>
+                        <div style="height: 2px;"></div>
+                        <label><input type="checkbox" id="upperSeat" name="seatPreference" value="upper"> Upper </label>
+                        <label><input type="checkbox" id="middleSeat" name="seatPreference" value="middle"> Middle</label>
+                        <label><input type="checkbox" id="lowerSeat" name="seatPreference" value="lower"> Lower </label>
                     </div>
                     <br>
                     <div>
-                        <label for="mealPreference"> Meal Preference:</label>
-                        Vegetarian
-                        <input type="radio" id="vegetarian" name="mealPreference" value="vegetarian" required />
-                        Non-Vegetarian
-                        <input type="radio" id="nonVegetarian" name="mealPreference" value="nonVegetarian" required />
-                        No Meal
-                        <input type="radio" id="noMeal" name="mealPreference" value="noMeal" required /> </label>
+                        <label for="mealPreference"> Meal Preference : </label>
+
+                        <label><input type="radio" id="vegetarian" name="mealPreference" value="vegetarian" required> Vegetarian <label>
+                        <label><input type="radio" id="nonVegetarian" name="mealPreference" value="nonVegetarian" required> Non-Vegetarian</label>
+                        <label><input type="radio" id="noMeal" name="mealPreference" value="noMeal" required> No Meal </label> 
                     </div>
                     <br>
                     <p style="padding-left:75%;">
@@ -122,7 +121,6 @@
     }
 
     label {
-        display: block;
         font-weight: bold;
     }
 
