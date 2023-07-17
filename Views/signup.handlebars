@@ -1,7 +1,7 @@
 <div class="row">
   <div class="signup-form">
     <h1 class="signup-heading">Sign Up</h1>
-    <form action="/dashboard" method="post">
+    <form action="/home" method="post" id="signupform">
       <div class="form-group">
         <label for="name">Name:</label>
         <input type="text" class="form-control" id="name" placeholder="Enter your name">
@@ -12,7 +12,7 @@
       </div>
       <div class="form-group">
         <label for="accountNumber">Account Number:</label>
-        <input type="text" class="form-control" id="accno" placeholder="Enter account number">
+        <input type="text" class="form-control" id="acc_no" placeholder="Enter account number">
       </div>
       <div class="form-group">
         <label for="email">Email:</label>
@@ -20,10 +20,10 @@
       </div>
       <div class="form-group">
         <label for="phoneNumber">Phone Number:</label>
-        <input type="number" class="form-control" id="phno" placeholder="Enter phone number">
+        <input type="number" class="form-control" id="phone" placeholder="Enter phone number">
       </div>
       <br>
-      <input type="submit" class="btn btn-success" value="Sign Up">
+      <input type="submit" class="btn btn-success" value="Sign Up" >
     </form>
   </div>
 </div>
@@ -75,3 +75,18 @@
 }
 
 </style>
+
+<script>
+ document.getElementById("signupform").onsubmit = function (event) {
+      event.preventDefault();
+      Swal.fire({
+        title: "Wow",
+        text: " You have Successfully Created your Account. Login to continue",
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 3000
+      }).then(function () {
+        document.getElementById("signupform").submit();
+      });
+    }
+</script>

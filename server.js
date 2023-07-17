@@ -46,6 +46,11 @@ app.get('/home', (req, res) => {
     res.render('home', {})
 })
 
+//posting to /home (need to implemnet this)
+app.post('/home', (req, res) => {
+    res.render('login', {})
+})
+
 app.get('/passenger-login', (req, res) => {
     res.render('login', {})
 })
