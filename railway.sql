@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2023 at 09:07 AM
+-- Generation Time: Jul 17, 2023 at 10:06 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -36,6 +36,16 @@ CREATE TABLE `booking` (
   `seat_type` varchar(20) NOT NULL,
   `no_of_seats` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`booking_id`, `train_number`, `journey_date`, `fare`, `acc_num`, `seat_type`, `no_of_seats`) VALUES
+(5162, 12345, '2023-07-20', 1500, 4, '2A', 1),
+(7379, 12345, '2023-07-14', 1500, 4, '2A', 1),
+(9419, 12345, '2023-07-26', 3000, 4, '2A', 2),
+(9798, 12345, '2023-07-26', 1500, 4, '2A', 1);
 
 -- --------------------------------------------------------
 
@@ -88,6 +98,14 @@ CREATE TABLE `payment` (
   `booking_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`payment_mode`, `payment_id`, `amount`, `payment_status`, `booking_id`) VALUES
+('cash', 4104, 0, 'success', 7379),
+('cash', 9844, 0, 'success', 5162);
+
 -- --------------------------------------------------------
 
 --
@@ -108,12 +126,8 @@ CREATE TABLE `seat_inventory` (
 INSERT INTO `seat_inventory` (`fare`, `available_seats`, `seat_type`, `train_number`) VALUES
 (800, 43, '3A', 6969),
 (500, 96, 'SL', 6969),
-(200, 100, 'ECONOMY', 11111),
 (2000, 93, '1A', 12345),
-(1500, 75, '2A', 12345),
-(3, 100, 'BLABLA', 12345),
-(9000, 5, 'Elite', 13456),
-(3, 100, 'ECONOMY', 22222);
+(1500, 70, '2A', 12345);
 
 -- --------------------------------------------------------
 
@@ -132,13 +146,9 @@ CREATE TABLE `station` (
 --
 
 INSERT INTO `station` (`station_code`, `station_name`, `location`) VALUES
-('A', 'A', 'A'),
-('B', 'B', 'B'),
 ('BGB', 'Budge Budge', 'Budge Budge Junction'),
 ('BLY', 'Ballygunge', 'Ballygunge Junction'),
-('C', 'C', 'C'),
 ('CANG', 'Canning', 'Canning District'),
-('D', 'D', 'D'),
 ('SDH', 'Sealdah', 'Sealdah Junction');
 
 -- --------------------------------------------------------
@@ -160,12 +170,8 @@ CREATE TABLE `train` (
 
 INSERT INTO `train` (`destination`, `origin`, `train_name`, `train_number`) VALUES
 ('CANG', 'SDH', 'canning local', 6969),
-('SDH', 'CANG', 'canning-local-2', 7979),
-('B', 'A', 'A-B', 11111),
 ('SDH', 'BGB', 'budge-budge local', 12345),
-('SDH', 'BLY', 'Ballygunge-Sealdah Local', 13456),
-('A', 'B', 'B-A', 22222),
-('D', 'C', 'C-D', 333333);
+('SDH', 'BLY', 'Ballygunge-Sealdah Local', 13456);
 
 --
 -- Indexes for dumped tables
@@ -228,8 +234,8 @@ ALTER TABLE `train`
 -- Constraints for table `booking`
 --
 ALTER TABLE `booking`
-  ADD CONSTRAINT `fk_booking` FOREIGN KEY (`acc_num`) REFERENCES `passenger` (`acc_num`),
-  ADD CONSTRAINT `fk_booking_train` FOREIGN KEY (`train_number`) REFERENCES `train` (`train_number`);
+  ADD CONSTRAINT `fk_booking` FOREIGN KEY (`acc_num`) REFERENCES `passenger` (`acc_num`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_booking_train` FOREIGN KEY (`train_number`) REFERENCES `train` (`train_number`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `cancellation`
@@ -247,14 +253,14 @@ ALTER TABLE `payment`
 -- Constraints for table `seat_inventory`
 --
 ALTER TABLE `seat_inventory`
-  ADD CONSTRAINT `fk_seat_inventory` FOREIGN KEY (`train_number`) REFERENCES `train` (`train_number`);
+  ADD CONSTRAINT `fk_seat_inventory` FOREIGN KEY (`train_number`) REFERENCES `train` (`train_number`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `train`
 --
 ALTER TABLE `train`
-  ADD CONSTRAINT `fk_dest` FOREIGN KEY (`destination`) REFERENCES `station` (`station_code`),
-  ADD CONSTRAINT `fk_origin` FOREIGN KEY (`origin`) REFERENCES `station` (`station_code`);
+  ADD CONSTRAINT `fk_dest` FOREIGN KEY (`destination`) REFERENCES `station` (`station_code`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_origin` FOREIGN KEY (`origin`) REFERENCES `station` (`station_code`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
