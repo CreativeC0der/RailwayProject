@@ -46,7 +46,7 @@ app.get('/home', (req, res) => {
     res.render('home', {})
 })
 
-//posting to /home (need to implemnet this)
+//posting to /passnger-login (need to implemnet this)
 app.post('/passenger-login', (req, res) => {
     console.log(req.body);
     res.render('login', {});
