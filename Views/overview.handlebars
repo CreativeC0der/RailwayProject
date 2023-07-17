@@ -3,7 +3,7 @@
 
 <div class="container">
   <h1>Train Ticket Booking Details</h1>
- 
+
   <div class="row">
     <div class="col-md-6">
       <h2>Passenger Information:</h2>
@@ -37,13 +37,14 @@
   <div class="row">
     <div class="col-md-12 total-fare">
       <h2>Total Fare:<i> {{bookingData.fare}} </i></h2>
-      
+
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-12 btn-payment">
-      <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#trainModal">Proceed to Payment</button>
+      <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#trainModal">Proceed to
+        Payment</button>
     </div>
   </div>
 </div>
@@ -56,7 +57,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="/book/payment" method="post">
+        <form action="/book/payment" method="post" id="payment-form">
           <div>
             <p><strong>Name :</strong>{{userData.name}} </p>
           </div>
@@ -89,12 +90,35 @@
 </div>
 <script>
   function getsuccess() {
-      document.getElementById("paymentstatus").value = "success";
-      
+    document.getElementById("paymentstatus").value = "success";
+    document.getElementById("payment-form").onsubmit = function (event) {
+      event.preventDefault();
+      Swal.fire({
+        title: "Nice",
+        text: "Bookng Successful, Redirecting to Dashboard page",
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 3000
+      }).then(function () {
+        document.getElementById("payment-form").submit();
+      });
     }
-    function getfailed() {
-      document.getElementById("paymentstatus").value = "failed";
+  }
+  function getfailed() {
+    document.getElementById("paymentstatus").value = "failed";
+    document.getElementById("payment-form").onsubmit = function (event) {
+      event.preventDefault();
+      Swal.fire({
+        title: "Oh , no!",
+        text: "Bookng Failed, Redirecting to Dashboard page",
+        icon: 'warning',
+        showConfirmButton: false,
+        timer: 3000
+      }).then(function () {
+        document.getElementById("payment-form").submit();
+      });
     }
+  }
 </script>
 
 <style>
@@ -136,8 +160,9 @@
     margin-top: 20px;
     text-align: center;
   }
-  
-  select, input[type="number"] {
+
+  select,
+  input[type="number"] {
     height: 30px;
     border-radius: 3px;
     border: 1px solid #ccc;
