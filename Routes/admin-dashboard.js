@@ -27,7 +27,7 @@ app.post('/admin-dashboard', (req, res) => {
             }
         }
         else
-            resolve('admin data found in DB');
+            resolve('admin data found');
     })
 
     p1
