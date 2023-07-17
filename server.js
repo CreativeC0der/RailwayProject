@@ -49,7 +49,18 @@ app.get('/home', (req, res) => {
 //posting to /passnger-login (need to implemnet this)
 app.post('/passenger-login', (req, res) => {
     console.log(req.body);
-    res.render('login', {});
+    query = `insert into passenger values(
+        "${req.body.name}",
+        "${req.body.acc_num}",
+        "${req.body.email}",
+        "${req.body.phone}",
+        "${req.body.address}"
+    )`
+    connection.query(query, (err, results, fields) => {
+        if (err)
+            console.log(err);
+        res.redirect('/passenger-login');
+    })
 })
 
 app.get('/passenger-login', (req, res) => {

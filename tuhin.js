@@ -101,22 +101,18 @@ app.get('/book', (req, res) => {
         },
         result: [
             {
-                destination: 'sealdah',
-                origin: 'budge-budge',
-                train_name: 'budge-budge local',
-                train_number: 12345
-            },
-            {
-                destination: 'sealdah',
-                origin: 'canning',
+                destination: 'SDH',
+                origin: 'CANG',
                 train_name: 'canning local',
-                train_number: 23456
+                train_number: 6969,
+                seat_type: ['3A']
             },
             {
-                destination: 'sonapur',
-                origin: 'sealdah',
-                train_name: 'sonarpur local',
-                train_number: 78901
+                destination: 'SDH',
+                origin: 'CANG',
+                train_name: 'SDH-CNG',
+                train_number: 11111,
+                seat_type: ['2A', 'Elite']
             }
         ]
     })

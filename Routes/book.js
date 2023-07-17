@@ -7,13 +7,38 @@ const app = express.Router();
 
 app.get('/book', (req, res) => {
     console.log(req.query);
-    query = `select * from train where
-            origin="${req.query.src}" AND destination="${req.query.dept}"`;
-    connection.query(query, (err, result, field) => {
+    query = `select train.*,seat_type from 
+            train NATURAL JOIN seat_inventory
+            where origin="${req.query.src}" AND destination="${req.query.dept}"`;
+
+
+
+    connection.query(query, (err, results, field) => {
         if (err)
             res.send('query error');
-        console.log({ userData: userData, result: result });
-        res.render('book', { userData: userData, result: result });
+        console.log(results);
+        output = [];
+        for (train of results) {
+
+            found = false
+            for (i in output) {
+                if (output[i].train_number == train.train_number) {
+                    found = true;
+                    (output[i].seat_type).push(train.seat_type);
+                    break;
+                }
+
+            }
+
+            if (!found) {
+                train.seat_type = [train.seat_type];
+                output.push(train);
+            }
+        }
+        console.log("MY TRAINS");
+        for (train of output)
+            console.log(train);
+        res.render('book', { userData: userData, result: output });
     })
 });
 
