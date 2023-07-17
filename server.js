@@ -47,8 +47,9 @@ app.get('/home', (req, res) => {
 })
 
 //posting to /home (need to implemnet this)
-app.post('/home', (req, res) => {
-    res.render('login', {})
+app.post('/passenger-login', (req, res) => {
+    console.log(req.body);
+    res.render('login', {});
 })
 
 app.get('/passenger-login', (req, res) => {
@@ -86,7 +87,7 @@ app.post('/admin-dashboard/add-seat', adminRoute);
 
 //need to implemnet @shrijon
 
- //posting station_code
+//posting station_code
 app.post('/admin-dashboard/delete-station', adminRoute);
 //posting train_number, train_name
 app.post('/admin-dashboard/delete-train', adminRoute);
