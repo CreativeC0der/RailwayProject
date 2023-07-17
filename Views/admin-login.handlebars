@@ -65,3 +65,30 @@
 </div>
 
 
+<script>
+    document.getElementById("loginForm").onsubmit = function (event) {
+        event.preventDefault();
+        var username = document.getElementById("accno").value;
+        var password = document.getElementById("email").value;
+
+        if (username === "0" && password === "admin@gmail.com") {
+            Swal.fire({
+                title: "Cool",
+                text: "Credentials Matched ",
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1500
+            }).then(function () {
+                // Submit the form after success alert
+                document.getElementById("loginForm").submit();
+            });
+        } else {
+            Swal.fire({
+                title: "Wrong",
+                text: "Wrong credentials",
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            });
+        }
+    }
+</script>

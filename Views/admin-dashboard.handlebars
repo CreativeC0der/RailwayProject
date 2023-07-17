@@ -328,6 +328,7 @@
 
 
 <style>
+  
     .card {
         background-color: #fff;
         padding: 10px;
@@ -383,10 +384,12 @@
         var mess = document.getElementById("al").textContent;
         console.log(mess);
         Swal.fire({
+            width: 400,
             title: "Success",
             text: mess,
             icon: 'success',
-            confirmButtonText: 'Ok'
+            showConfirmButton: false,
+            timer: 1500
         });
 
     };
