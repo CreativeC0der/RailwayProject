@@ -97,7 +97,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="/dashboard/cancel" method="POST">
+        <form action="/dashboard/cancel" method="POST" id="deletebooking">
           <input type="hidden" id="modal_payment_id" name="payment_id" value="">
           <input type="hidden" id="modal_booking_id" name="booking_id" value="">
           <input type="hidden" id="acc_num" name="acc_num" value="{{userData.acc_num}}">
@@ -181,6 +181,17 @@
       console.log(booking_id);
 
     }
-
+  document.getElementById("deletebooking").onsubmit = function (event) {
+      event.preventDefault();
+      Swal.fire({
+        title: "OK , No Problem",
+        text: " We apologize for any inconvenience caused. Upon successful payment, your funds will be promptly transferred to your original payment account within 3-4 business working days. Thank you for your understanding and patience. If you have any further questions or concerns, please don't hesitate to contact our customer support team. ",
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 10000
+      }).then(function () {
+        document.getElementById("deletebooking").submit();
+      });
+    }
 
   </script>
