@@ -178,13 +178,20 @@
                             <form action="/admin-dashboard/add-train" method="POST">
                                 <div class="form-group">
                                     <label for="destination">Destination:</label>
-                                    <input type="text" id="destination" name="destination" class="form-control"
-                                        required>
+                                    <select id="destination" name="destination" required class="form-control">
+                                        {{#each stations}}
+                                        <option value="{{station_code}}">{{station_name}}</option>
+                                        {{/each}}
+                                    </select>
                                 </div>
                                 <br>
                                 <div class="form-group">
                                     <label for="origin">Origin:</label>
-                                    <input type="text" id="origin" name="origin" class="form-control" required>
+                                    <select id="origin" name="origin" required class="form-control">
+                                        {{#each stations}}
+                                        <option value="{{station_code}}">{{station_name}}</option>
+                                        {{/each}}
+                                    </select>
                                 </div>
                                 <br>
                                 <div class="form-group">
@@ -304,9 +311,12 @@
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                    <label for="train_number">Train Number:</label>
-                                    <input type="text" id="train_number" name="train_number" class="form-control"
-                                        required>
+                                    <label for="train_number">Train Name:</label>
+                                   <select id="train_number" name="train_number" required class="form-control">
+                                        {{#each trains}}
+                                        <option value="{{train_number}}">{{train_name}}</option>
+                                        {{/each}}
+                                    </select>
                                 </div>
                                 <br>
                                 <div class="form-group" style="padding-left: 60%;">
@@ -386,7 +396,9 @@
             title: "Success",
             text: mess,
             icon: 'success',
-            confirmButtonText: 'Ok'
+            showConfirmButton: false,
+            timer: 1000
+
         });
 
     };
