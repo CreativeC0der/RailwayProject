@@ -54,7 +54,7 @@
                     <div>
                         <label for="seatType">Seat Type:</label>
                         <select id="seatType" name="seatType" required>
-                            {{#each trains}}
+                            {{#each result}}
                             {{#each seat_type}}
                             <option value="{{this}}">{{this}}</option>
                             {{/each}}
