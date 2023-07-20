@@ -25,7 +25,7 @@ app.get('/signup', (req, res) => {
     res.render('signup', {})
 })
 
-app.get('/dashboard', (req, res) => {
+app.post('/dashboard', (req, res) => {
     res.render('dashboard', {
         userData: {
             name: 'Shrijon',

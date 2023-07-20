@@ -1,76 +1,87 @@
-
-  <div class="container">
-    <br>
-    <div class="project-card">
-      <h1 class="project-heading">About Our Project</h1>
-      <p class="project-description">
-        The Railway Management System is a comprehensive software solution designed to automate and manage the operations of a railway network. The system includes various tables that store information related to bookings, cancellations, passengers, payments, seat inventory, stations, and trains.
-      </p>
-    </div>
-
-    <div class="table-card">
-      <h2 class="table-heading">Key Tables</h2>
-      <ul class="table-list">
-        <li><strong>booking:</strong> Stores information about the bookings made by passengers. It contains details such as the booking ID, train number, journey date, fare, account number, seat type, and the number of seats booked.</li>
-        <li><strong>cancellation:</strong> Stores information about cancellations made by passengers. It includes the cancellation charge, cancellation date, booking ID, and a unique cancellation ID.</li>
-        <li><strong>passenger:</strong> Stores information about the passengers, including their name, account number, email, phone number, and address.</li>
-        <li><strong>payment:</strong> Stores information about the payments made for bookings. It includes details such as the payment mode, payment ID, amount, payment status, and the associated booking ID.</li>
-        <li><strong>seat_inventory:</strong> Contains information about seat availability and fares for different seat types on specific trains. It includes details such as the fare, available seats, seat type, and train number.</li>
-        <li><strong>station:</strong> Stores information about the railway stations. It includes the station code, station name, and location.</li>
-        <li><strong>train:</strong> Contains information about the trains, including the train destination, origin, train name, and train number.</li>
-      </ul>
-    </div>
-
-    <div class="project-card">
-      <p class="project-description">
-        The database schema includes appropriate relationships between the tables using primary and foreign keys. These relationships ensure data integrity and enable efficient querying and retrieval of information.
-      </p>
-      <p class="project-description">
-        The Railway Management System aims to streamline various processes such as ticket booking, reservations, cancellations, passenger management, payment processing, seat inventory management, and train scheduling. By automating these tasks and providing accurate information to passengers, the system enhances the overall efficiency, convenience, and customer experience of railway operations.
-      </p>
-    </div>
+<div class="container">
+  <br>
+  <div class="project-card">
+    {{}}
+    <p class="project-description">
+      The Railway Management System is a comprehensive software solution designed to automate and manage the operations
+      of a railway network. The system includes various tables that store information related to bookings,
+      cancellations, passengers, payments, seat inventory, stations, and trains.
+    </p>
   </div>
 
+  <div class="table-card">
+    <h2 class="table-heading">Key Tables</h2>
+    <ul class="table-list">
+      <li><strong>booking:</strong> Stores information about the bookings made by passengers. It contains details such
+        as the booking ID, train number, journey date, fare, account number, seat type, and the number of seats booked.
+      </li>
+      <li><strong>cancellation:</strong> Stores information about cancellations made by passengers. It includes the
+        cancellation charge, cancellation date, booking ID, and a unique cancellation ID.</li>
+      <li><strong>passenger:</strong> Stores information about the passengers, including their name, account number,
+        email, phone number, and address.</li>
+      <li><strong>payment:</strong> Stores information about the payments made for bookings. It includes details such as
+        the payment mode, payment ID, amount, payment status, and the associated booking ID.</li>
+      <li><strong>seat_inventory:</strong> Contains information about seat availability and fares for different seat
+        types on specific trains. It includes details such as the fare, available seats, seat type, and train number.
+      </li>
+      <li><strong>station:</strong> Stores information about the railway stations. It includes the station code, station
+        name, and location.</li>
+      <li><strong>train:</strong> Contains information about the trains, including the train destination, origin, train
+        name, and train number.</li>
+    </ul>
+  </div>
+
+  <div class="project-card">
+    <p class="project-description">
+      The database schema includes appropriate relationships between the tables using primary and foreign keys. These
+      relationships ensure data integrity and enable efficient querying and retrieval of information.
+    </p>
+    <p class="project-description">
+      The Railway Management System aims to streamline various processes such as ticket booking, reservations,
+      cancellations, passenger management, payment processing, seat inventory management, and train scheduling. By
+      automating these tasks and providing accurate information to passengers, the system enhances the overall
+      efficiency, convenience, and customer experience of railway operations.
+    </p>
+  </div>
+</div>
+
 <style>
-.project-card {
-  background-color: #f5f5f5;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-}
+  .project-card {
+    background-color: #f5f5f5;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
 
-.project-heading {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
+  .project-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
 
-.project-description {
-  font-size: 16px;
-  line-height: 1.5;
-  margin-bottom: 20px;
-}
+  .project-description {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
 
-.table-card {
-  background-color: #f5f5f5;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-}
+  .table-card {
+    background-color: #f5f5f5;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
 
-.table-heading {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
+  .table-heading {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
 
-.table-list {
-  margin-left: 20px;
-}
+  .table-list {
+    margin-left: 20px;
+  }
 
-.table-list li {
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-
+  .table-list li {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
 </style>
-
