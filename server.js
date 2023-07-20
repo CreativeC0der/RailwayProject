@@ -36,9 +36,12 @@ global.connection = connection;
 // initialize views and Handlebars
 app.engine('handlebars', hbs.engine({
     helpers: {
-        stringify: function (context) {
-          return JSON.stringify(context);
+        ifEquals: function (arg1, arg2, options) {
+            return arg1 === arg2 ? options.fn(this) : options.inverse(this);
         },
+        jsonStringify: function (context) {
+            return JSON.stringify(context);
+        }
     }
 }));
 app.set('view engine', 'handlebars')
