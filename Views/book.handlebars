@@ -55,9 +55,11 @@
                         <label for="seatType">Seat Type:</label>
                         <select id="seatType" name="seatType" required>
                             {{#each result}}
+                            {{#ifEquals train_number ../selectedTrainNumber}}
                             {{#each seat_type}}
                             <option value="{{this}}">{{this}}</option>
                             {{/each}}
+                            {{/ifEquals}}
                             {{/each}}
                         </select>
                     </div>
@@ -86,7 +88,9 @@
                         <input type="submit" value="Book Now" />
                     </p>
                 </form>
-
+                <script>
+                    var result = {{{jsonStringify result}}};
+                </script>
             </div>
         </div>
     </div>
@@ -159,12 +163,24 @@
         background-color: #45a049;
     }
 </style>
-
 <script>
     function GetNumber(trainNumber) {
         document.getElementById("modaltrain").textContent = trainNumber;
         document.getElementById("trainNumber").value = trainNumber;
-        var x = document.getElementById("trainNumber").value;
-        console.log(x);
+        updateSeatTypes(trainNumber);
     }
+
+    function updateSeatTypes(trainNumber) {
+    const seatTypeSelect = document.getElementById("seatType");
+    seatTypeSelect.innerHTML = "";
+    const selectedTrain = result.find(train => train.train_number === trainNumber);
+    if (selectedTrain) {
+      selectedTrain.seat_type.forEach(seat => {
+        const option = document.createElement("option");
+        option.value = seat;
+        option.textContent = seat;
+        seatTypeSelect.appendChild(option);
+      });
+    }
+  }
 </script>

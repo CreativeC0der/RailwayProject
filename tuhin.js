@@ -88,6 +88,20 @@ app.get('/admin-login', (req, res) => {
     res.render('admin-login', {})
 })
 
+
+
+//hbs custom helper
+app.engine('handlebars', hbs.engine({
+    helpers: {
+        ifEquals: function (arg1, arg2, options) {
+            return arg1 === arg2 ? options.fn(this) : options.inverse(this);
+        },
+        jsonStringify: function(context){
+            return JSON.stringify(context);
+          }
+    }
+}));
+
 //TEMPLATE
 //query=acc_num,src,dest
 //DATA CHANGED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -100,13 +114,13 @@ app.get('/book', (req, res) => {
             phone: 2147483647,
             address: 'behala',
         },
-        result: [
+        result:[
             {
                 destination: 'SDH',
-                origin: 'CANG',
+                origin: 'CANG', 
                 train_name: 'canning local',
                 train_number: 6969,
-                seat_type: ['3A']
+                seat_type: ['3A','3B','6C']
             },
             {
                 destination: 'SDH',

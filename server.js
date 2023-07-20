@@ -36,19 +36,14 @@ global.connection = connection;
 // initialize views and Handlebars
 app.engine('handlebars', hbs.engine({
     helpers: {
-        fun: function (str) {
-            console.log("DATAAAAAAAAAAAA-", str);
-            return {
-                name: 'hello',
-                age: 22
-            };
+        stringify: function (context) {
+          return JSON.stringify(context);
         },
     }
 }));
 app.set('view engine', 'handlebars')
 app.set('views', './Views')
 app.use(express.urlencoded({ extended: true }))
-
 
 //Routing
 
