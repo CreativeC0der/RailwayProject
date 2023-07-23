@@ -14,9 +14,10 @@ const app = express();
 
 //connectiong to DB
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    database: 'railway'
+    host: 'sql6.freemysqlhosting.net',
+    user: 'sql6634593',
+    password: 'E1r1TMmUtF',
+    database: 'sql6634593'
 });
 
 connection.connect((err) => {
